@@ -1,0 +1,679 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sword of  Salvation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /*Глобальные шрифты*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /*Переключение страниц*/
+        .nav-pages {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 1.2rem;
+        }
+
+            .nav-pages button {
+                background: transparent;
+                border: none;
+                font-size: 1.1rem;
+                font-weight: 600;
+                padding: 0.5rem 1.2rem;
+                border-radius: 40px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                color: #aaa;
+                letter-spacing: 0.3px;
+            }
+
+                .nav-pages button i {
+                    margin-right: 8px;
+                }
+
+                .nav-pages button.active {
+                    color: #fff;
+                    background: rgba(255,255,255,0.06);
+                    box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+                }
+
+                .nav-pages button:hover {
+                    color: #fff;
+                    background: rgba(255,255,255,0.03);
+                }
+
+        /*Страницы*/
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+            .page.active {
+                display: block;
+            }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0.4;
+                transform: translateY(6px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /*СТРАНИЦА 1: ОБ ИГРЕ ЛОООООООООООООООООООООООООООООООООООЛ*/
+
+            .page-game h1 {
+                font-size: 3rem;
+                font-weight: 800;
+                color: #5D02FA;
+                letter-spacing: -0.5px;
+                margin-bottom: 0.25rem;
+            }
+
+            .page-game .subhead {
+                font-size: 1.2rem;
+                color: #2ebe75;
+                margin-bottom: 1.8rem;
+                border-left: 4px solid #2ebe75;
+                padding-left: 1rem;
+            }
+
+        /*Блок обложки и иконки*/
+        .hero-block {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .cover-wrapper {
+            flex: 2;
+            min-width: 240px;
+            background: #0d0d0d;
+            padding: 1rem;
+            text-align: center;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+        }
+
+            .cover-wrapper i {
+                font-size: 4rem;
+                color: #5D02FA;
+                margin-bottom: 0.5rem;
+            }
+
+            .cover-wrapper span {
+                font-size: 0.9rem;
+                background: #1a1a1a;
+                padding: 0.3rem 1.2rem;
+                border-radius: 40px;
+            }
+
+        .icon-wrapper {
+            flex: 1;
+            min-width: 120px;
+            max-width: 180px;
+            background: #0d0d0d;
+            padding: 1rem;
+            text-align: center;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+        }
+
+            .icon-wrapper i {
+                font-size: 4rem;
+                color: #2ebe75;
+                margin-bottom: 0.5rem;
+            }
+
+            .icon-wrapper span {
+                font-size: 0.8rem;
+                background: #1a1a1a;
+                padding: 0.2rem 1rem;
+                border-radius: 40px;
+            }
+
+        /*Блок описания*/
+        .page-game .game-description {
+            background: #0d0d0d;
+            padding: 1.8rem;
+            border-radius: 20px;
+            margin: 1.8rem 0;
+            border-left: 6px solid #5D02FA;
+            color: #ddd;
+        }
+
+            .page-game .game-description p {
+                margin-bottom: 1rem;
+            }
+
+                .page-game .game-description p:last-child {
+                    margin-bottom: 0;
+                }
+
+        /*Фичи*/
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .feature-item {
+            background: #111;
+            padding: 1.2rem 0.8rem;
+            border-radius: 18px;
+            text-align: center;
+            border: 1px solid #2a2a2a;
+            transition: 0.15s;
+        }
+
+            .feature-item i {
+                font-size: 2rem;
+                color: #2ebe75;
+                margin-bottom: 0.4rem;
+            }
+
+            .feature-item span {
+                display: block;
+                font-weight: 500;
+                color: #eee;
+            }
+
+            .feature-item small {
+                color: #999;
+                font-size: 0.85rem;
+            }
+
+        /*СКрины*/
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 2fr);
+            gap: 1rem;
+            margin: 2rem 0 1.5rem;
+        }
+
+        @media (max-width: 760px) {
+            .screenshots-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-block {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .icon-wrapper {
+                max-width: 100%;
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /*Кнопка CTA*/
+        .btn-cta {
+            display: inline-block;
+            background: #5D02FA;
+            color: #fff;
+            font-weight: 700;
+            padding: 0.8rem 2.8rem;
+            border-radius: 60px;
+            letter-spacing: 0.5px;
+            border: none;
+            transition: 0.2s;
+            margin-top: 0.5rem;
+            box-shadow: 0 6px 16px rgba(93, 2, 250, 0.3);
+        }
+
+            .btn-cta:hover {
+                background: #7a2aff;
+                transform: scale(1.02);
+                box-shadow: 0 8px 22px rgba(93, 2, 250, 0.5);
+            }
+
+        /*Ссылки внизу страницы*/
+        .game-footer-links {
+            margin-top: 3rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #222;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+            .game-footer-links a {
+                background: #121212;
+                padding: 0.6rem 2rem;
+                border-radius: 60px;
+                font-weight: 500;
+                color: #ccc;
+                border: 1px solid #2a2a2a;
+                transition: 0.2s;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .game-footer-links a i {
+                    color: #2ebe75;
+                }
+
+                .game-footer-links a:hover {
+                    background: #1e1e1e;
+                    color: #fff;
+                    border-color: #5D02FA;
+                    transform: translateY(-2px);
+                }
+
+        /*СТРАНИЦА 2: О РАЗРАБОТЧИКЕ КЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕК*/
+
+            .page-dev h1 {
+                font-size: 2.8rem;
+                font-weight: 800;
+                color: #FA0130;
+                letter-spacing: -0.5px;
+                margin-bottom: 0.2rem;
+            }
+
+            .page-dev .dev-tagline {
+                color: #ff6a7a;
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+                border-left: 4px solid #FA0130;
+                padding-left: 1rem;
+            }
+
+        /*Иконка*/
+        .dev-icon {
+            color: #FA0130;
+            margin-right: 6px;
+            font-size: 1rem;
+        }
+
+        .dev-card {
+            background: #0c0c0c;
+            padding: 2rem;
+            border-radius: 24px;
+            border: 1px solid #1f1f1f;
+        }
+
+            .dev-card p {
+                margin-bottom: 1rem;
+                color: #d0d0d0;
+            }
+
+            .dev-card .highlight-red {
+                color: #FA0130;
+                font-weight: 600;
+            }
+
+        .dev-social {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+            .dev-social a {
+                background: #161616;
+                padding: 0.5rem 1.4rem;
+                border-radius: 40px;
+                color: #ccc;
+                border: 1px solid #2a2a2a;
+                transition: 0.15s;
+                font-size: 0.95rem;
+            }
+
+                .dev-social a i {
+                    color: #FA0130;
+                    margin-right: 8px;
+                }
+
+                .dev-social a:hover {
+                    background: #1f1f1f;
+                    border-color: #FA0130;
+                    color: #fff;
+                }
+
+        /*СТРАНИЦА 3: О КОМПАНИИ ЧЕБУРЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕК*/
+
+            .page-company h1 {
+                font-size: 2.8rem;
+                font-weight: 800;
+                color: #FA0130;
+                letter-spacing: -0.5px;
+                margin-bottom: 0.2rem;
+            }
+
+            .page-company .company-sub {
+                color: #ff6a7a;
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+                border-left: 4px solid #FA0130;
+                padding-left: 1rem;
+            }
+
+        /*Иконка*/
+        .company-icon {
+            color: #FA0130;
+            margin-right: 8px;
+            width: 1.6rem;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .company-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            background: #0c0c0c;
+            padding: 1.8rem;
+            border-radius: 24px;
+            border: 1px solid #1f1f1f;
+        }
+
+            .company-grid .info-block {
+                background: #111;
+                padding: 1.5rem;
+                border-radius: 18px;
+                border-left: 4px solid #FA0130;
+            }
+
+                .company-grid .info-block h3 {
+                    color: #FA0130;
+                    margin-bottom: 0.5rem;
+                    font-size: 1.2rem;
+                }
+
+                .company-grid .info-block p {
+                    color: #c0c0c0;
+                }
+
+                .company-grid .info-block i {
+                    color: #FA0130;
+                    margin-right: 8px;
+                    width: 1.4rem;
+                }
+
+        @media (max-width: 650px) {
+            .company-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-game h1,
+            .page-dev h1,
+            .page-company h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /*дополнительный акцент*/
+        .text-muted {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .mt-2 {
+            margin-top: 1.2rem;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /*ссылки на страницах*/
+        .back-to-game {
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+
+            .back-to-game a {
+                color: #aaa;
+                border: 1px solid #2a2a2a;
+                padding: 0.5rem 2rem;
+                border-radius: 60px;
+                transition: 0.2s;
+                display: inline-block;
+            }
+
+                .back-to-game a:hover {
+                    color: #fff;
+                    border-color: #FA0130;
+                    background: #1a1a1a;
+                }
+
+            .back-to-game i {
+                margin-right: 8px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!--СТРАНИЦА 1: ОБ ИГРЕ-->
+        <div id="page-game" class="page active page-game">
+            <h1>Sword of Salvation</h1>
+            <div class="subhead"><i class="fas fa-bolt" style="color:#2ebe75;"></i> Погрузитесь в эпичные сражения с ордами монстров</div>
+
+            <!--обложка и иконка-->
+            <div class="hero-block">
+                <div class="cover-wrapper">
+                    <img src="Desk.png" alt="Обложка игры" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+                </div>
+                <div class="icon-wrapper">
+                    <img src="icon.png" alt="Иконка игры" style="width:100%; height:100%; object-fit:contain;">
+                </div>
+            </div>
+
+            <div class="game-description">
+                <p>
+                    <strong style="color:#5D02FA;">▸</strong> Первая мобильная top-down Action-RPG, сочетающая глубокую систему боя, атмосферный пиксельный мир и свободу исследований в открытом мире.</p>
+                <p><strong style="color:#2ebe75;">▸</strong> Раскройте древние тайны и решите - уничтожить всех демонов... или найти иной путь?</p>
+                <p><strong style="color:#5D02FA;">▸</strong> Создано небольшой командой энтузиастов, вложивших душу в каждый пиксель.</p>
+            </div>
+
+            <!--Фичи-->
+            <div class="feature-grid">
+                <div class="feature-item"><i class="fas fa-skull"></i><span>Тёмное фэнтези, где за каждым углом таится неизвестная опасность.</span><small>Атмосфера</small></div>
+                <div class="feature-item"><i class="fas fa-robot"></i><span>Различные виды монстров. К каждому необходим свой подход.</span><small>Противники</small></div>
+                <div class="feature-item"><i class="fas fa-cubes"></i><span>Нет типичных улучшений показателей. Лишь разнообразие оружия на свой цвет и вкус.</span><small>Система прокачки</small></div>
+                <div class="feature-item"><i class="fas fa-music"></i><span>От электроники до оркестровой музыки. Смеси жанров, дающие новый взгляд на музыку.</span><small>Саундтрек</small></div>
+            </div>
+
+            <!--Скрины-->
+            <div class="screenshots-grid">
+                <div class="screenshot-placeholder">
+                    <img src="Screenshot1.jpg" alt="Скриншот 1" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+                </div>
+                <div class="screenshot-placeholder">
+                    <img src="Screenshot2.jpg" alt="Скриншот 1" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+                </div>
+                <div class="screenshot-placeholder">
+                    <img src="Screenshot3.jpg" alt="Скриншот 1" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+                </div>
+                <div class="screenshot-placeholder">
+                    <img src="Screenshot4.jpg" alt="Скриншот 1" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+                </div>
+            </div>
+
+            <!--Ссылки-->
+            <a href="https://m.vk.com/video-233274993_456239017?from=post&list=296014dc5d3bfb0885&post=-233274993_2" target="_blank" class="btn-cta"><i class="fas fa-play"></i> Смотреть трейлер</a>
+            <span style="margin-left: 1rem; color: #666; font-size: 0.9rem;">или <a href="https://m.vk.com/trivi_games" target="_blank" style="color:#2ebe75;">подробнее</a></span>
+
+            <!--Ссылки на другие страницы-->
+            <div class="game-footer-links">
+                <a href="#" class="link-dev"><i class="fas fa-user-astronaut"></i> О разработчике</a>
+                <a href="#" class="link-company"><i class="fas fa-building"></i> О компании</a>
+            </div>
+        </div>
+
+        <!--СТРАНИЦА 2: О РАЗРАБОТЧИКЕ-->
+        <div id="page-dev" class="page page-dev">
+            <h1>О разработчике</h1>
+            <div class="dev-tagline"><i class="fas fa-code" style="color:#FA0130;"></i>Муллакаев Камиль</div>
+
+            <div style="text-align: left; margin-bottom: 1.5rem;">
+                <img src="DeveloperIcon.jpg" alt="Иконка разработчика" style="width: 200px; height: 200px; object-fit: contain; border-radius: 12px; border: 2px solid #FA0130;">
+            </div>
+
+            <div class="dev-card">
+                <p><span class="highlight-red"><i class="fas fa-user dev-icon"></i></span> <strong> Йоу. Я — разработчик</strong> этой игры. Являюсь студентом КНИТУ-КАИ
+                Института КТЗИ.
+                Я начал работу над этой игрой ещё в 2022 и с тех пор активно занимаюсь программированием.</p>
+                <p><span class="highlight-red"><i class="fas fa-gamepad dev-icon"></i></span> Обожаю искусство, поэтому люблю создавать что то оригинальное и экспериментировать с механиками игры.</p>
+                <p><span class="highlight-red"><i class="fas fa-rocket dev-icon"></i></span> Вдохновляюсь современными слэшерами и японскими RPG. Для связи используйте соцсети ниже.</p>
+                <div class="dev-social">
+                    <a href="https://m.vk.com/fireway31" target="_blank"><i class="fab fa-vk"></i> VK</a>
+                    <a href="https://github.com/Retro31k" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="mailto:kamil.me@mail.ru" target="_blank"><i class="fas fa-envelope"></i> kamil.me@mail.ru</a>
+                </div>
+            </div>
+
+            <div class="back-to-game">
+                <a href="#" class="back-link"><i class="fas fa-arrow-left"></i> Вернуться к игре</a>
+            </div>
+        </div>
+
+        <!--СТРАНИЦА 3: О КОМПАНИИ-->
+        <div id="page-company" class="page page-company">
+            <h1>О компании</h1>
+            <div class="company-sub"><i class="fas fa-flag" style="color:#FA0130;"></i> Trivi</div>
+
+            <div style="text-align: left; margin-bottom: 1.5rem;">
+                <img src="CompanyIcon.jpg" alt="Иконка компании" style="width: 200px; height: 200px; object-fit: contain; border-radius: 12px; border: 2px solid #FA0130;">
+            </div>
+
+            <div class="company-grid">
+                <div class="info-block">
+                    <h3><i class="fas fa-users company-icon"></i> Кто мы</h3>
+                    <p>Небольшая команда энтузиастов, создающая игры с душой. Наша цель — дарить игрокам уникальные эмоции.</p>
+                </div>
+                <div class="info-block">
+                    <h3><i class="fas fa-calendar-alt company-icon"></i> История</h3>
+                    <p>Работаем над игрой вместе с 2023 года. Каждый вносит свой вклад.</p>
+                </div>
+                <div class="info-block">
+                    <h3><i class="fas fa-globe company-icon"></i> Миссия</h3>
+                    <p>Делать достойные для российского геймдева мобильные и компьютерные игры, которые запоминаются.</p>
+                </div>
+                <div class="info-block">
+                    <h3><i class="fas fa-handshake company-icon"></i> Контакты</h3>
+                    <p><i class="fas fa-envelope company-icon"></i> trivigamesss@gmail.com </p>
+                </div>
+            </div>
+
+            <div class="back-to-game">
+                <a href="#" class="back-link"><i class="fas fa-arrow-left"></i> Вернуться к игре</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            const navButtons = document.querySelectorAll('.nav-pages button');
+            const pages = {
+                game: document.getElementById('page-game'),
+                dev: document.getElementById('page-dev'),
+                company: document.getElementById('page-company')
+            };
+
+            function switchPage(pageId) {
+                Object.values(pages).forEach(p => p.classList.remove('active'));
+                if (pages[pageId]) pages[pageId].classList.add('active');
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                const activeBtn = Array.from(navButtons).find(btn => btn.dataset.page === pageId);
+                if (activeBtn) activeBtn.classList.add('active');
+            }
+
+            // Обработчики для навигационных кнопок
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    const page = this.dataset.page;
+                    if (page) switchPage(page);
+                });
+            });
+            // Ссылки внизу страницы игры
+            const linkDev = document.querySelector('.link-dev');
+            const linkCompany = document.querySelector('.link-company');
+            if (linkDev) linkDev.addEventListener('click', function (e) {
+                e.preventDefault();
+                switchPage('dev');
+            });
+            if (linkCompany) linkCompany.addEventListener('click', function (e) {
+                e.preventDefault();
+                switchPage('company');
+            });
+
+            // Все ссылки с возвратом к игре
+            document.querySelectorAll('.back-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    switchPage('game');
+                });
+            });
+
+            // Защита от перезагрузки для всех ссылок на #
+            document.querySelectorAll('a[href="#"]').forEach(a => {
+                a.addEventListener('click', function (e) {
+                    e.preventDefault();
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>
