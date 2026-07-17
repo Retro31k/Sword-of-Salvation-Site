@@ -1,23 +1,32 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sword of  Salvation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sword of Salvation — epic action-RPG</title>
+    <link rel="icon" type="image/png" href="#">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Balsamiq Sans from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
-        /*Глобальные шрифты*/
+        /* ----- reset & base (Harpia-like) ----- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
         }
 
         body {
-            background: #000000;
-            color: #f0f0f0;
-            line-height: 1.6;
+            background: #0b0b10;
+            background-image: radial-gradient(circle at 20% 30%, #171a26 0%, #050508 90%);
+            color: #e8e8f0;
+            font-family: 'Balsamiq Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 0 1rem;
         }
 
         a {
@@ -26,658 +35,1001 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.5rem 3rem;
         }
 
-        /*Переключение страниц*/
-        .nav-pages {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding-bottom: 1.2rem;
-        }
-
-            .nav-pages button {
-                background: transparent;
-                border: none;
-                font-size: 1.1rem;
-                font-weight: 600;
-                padding: 0.5rem 1.2rem;
-                border-radius: 40px;
-                cursor: pointer;
-                transition: all 0.2s ease;
-                color: #aaa;
-                letter-spacing: 0.3px;
-            }
-
-                .nav-pages button i {
-                    margin-right: 8px;
-                }
-
-                .nav-pages button.active {
-                    color: #fff;
-                    background: rgba(255,255,255,0.06);
-                    box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
-                }
-
-                .nav-pages button:hover {
-                    color: #fff;
-                    background: rgba(255,255,255,0.03);
-                }
-
-        /*Страницы*/
-        .page {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-            .page.active {
-                display: block;
-            }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0.4;
-                transform: translateY(6px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /*СТРАНИЦА 1: ОБ ИГРЕ ЛОООООООООООООООООООООООООООООООООООЛ*/
-
-            .page-game h1 {
-                font-size: 3rem;
-                font-weight: 800;
-                color: #5D02FA;
-                letter-spacing: -0.5px;
-                margin-bottom: 0.25rem;
-            }
-
-            .page-game .subhead {
-                font-size: 1.2rem;
-                color: #2ebe75;
-                margin-bottom: 1.8rem;
-                border-left: 4px solid #2ebe75;
-                padding-left: 1rem;
-            }
-
-        /*Блок обложки и иконки*/
-        .hero-block {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
+        /* ----- header / nav (Harpia style) ----- */
+        .site-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 0.8rem 0;
             margin-bottom: 2rem;
-            align-items: flex-start;
         }
 
-        .cover-wrapper {
-            flex: 2;
-            min-width: 240px;
-            background: #0d0d0d;
-            padding: 1rem;
-            text-align: center;
-            aspect-ratio: 16 / 9;
+        .nav {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            color: #555;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
         }
 
-            .cover-wrapper i {
-                font-size: 4rem;
-                color: #5D02FA;
-                margin-bottom: 0.5rem;
-            }
-
-            .cover-wrapper span {
-                font-size: 0.9rem;
-                background: #1a1a1a;
-                padding: 0.3rem 1.2rem;
-                border-radius: 40px;
-            }
-
-        .icon-wrapper {
-            flex: 1;
-            min-width: 120px;
-            max-width: 180px;
-            background: #0d0d0d;
-            padding: 1rem;
-            text-align: center;
-            aspect-ratio: 1 / 1;
+        .brand {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            color: #555;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #f0f0ff, #b8a6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-            .icon-wrapper i {
-                font-size: 4rem;
-                color: #2ebe75;
-                margin-bottom: 0.5rem;
-            }
-
-            .icon-wrapper span {
-                font-size: 0.8rem;
-                background: #1a1a1a;
-                padding: 0.2rem 1rem;
-                border-radius: 40px;
-            }
-
-        /*Блок описания*/
-        .page-game .game-description {
-            background: #0d0d0d;
-            padding: 1.8rem;
-            border-radius: 20px;
-            margin: 1.8rem 0;
-            border-left: 6px solid #5D02FA;
-            color: #ddd;
+        .brand i {
+            font-size: 1.8rem;
+            -webkit-text-fill-color: initial;
+            color: #8B5CF6;
         }
 
-            .page-game .game-description p {
-                margin-bottom: 1rem;
-            }
-
-                .page-game .game-description p:last-child {
-                    margin-bottom: 0;
-                }
-
-        /*Фичи*/
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.2rem;
-            margin: 2rem 0 1.5rem;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.6rem;
+            list-style: none;
         }
 
-        .feature-item {
-            background: #111;
-            padding: 1.2rem 0.8rem;
-            border-radius: 18px;
-            text-align: center;
-            border: 1px solid #2a2a2a;
-            transition: 0.15s;
+        .nav-links a {
+            font-weight: 700;
+            color: #b0b0cc;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            padding: 0.4rem 0;
+            border-bottom: 2px solid transparent;
         }
 
-            .feature-item i {
-                font-size: 2rem;
-                color: #2ebe75;
-                margin-bottom: 0.4rem;
-            }
-
-            .feature-item span {
-                display: block;
-                font-weight: 500;
-                color: #eee;
-            }
-
-            .feature-item small {
-                color: #999;
-                font-size: 0.85rem;
-            }
-
-        /*СКрины*/
-        .screenshots-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 2fr);
-            gap: 1rem;
-            margin: 2rem 0 1.5rem;
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            border-bottom-color: #8B5CF6;
         }
 
-        @media (max-width: 760px) {
-            .screenshots-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .nav-links a.active {
+            color: #fff;
+        }
 
-            .hero-block {
+        .nav-links .lang-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #2a2a44;
+            color: #d0d0e8;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            outline: none;
+            font-family: 'Balsamiq Sans', sans-serif;
+        }
+
+        .nav-links .lang-select option {
+            background: #151525;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid #2a2a44;
+            width: 44px;
+            height: 28px;
+            border-radius: 40px;
+            cursor: pointer;
+            position: relative;
+            transition: 0.2s;
+        }
+
+        .theme-toggle .tt-thumb {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: #8B5CF6;
+            border-radius: 50%;
+            margin: 3px 0 0 3px;
+            transition: 0.25s;
+            box-shadow: 0 0 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.3rem;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: #c0c0e0;
+            transition: 0.2s;
+        }
+
+        @media (max-width: 820px) {
+            .nav-toggle {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
                 flex-direction: column;
                 align-items: stretch;
+                padding-top: 1rem;
+                gap: 0.6rem;
             }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links a {
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            }
+        }
 
-            .icon-wrapper {
-                max-width: 100%;
-                aspect-ratio: 1 / 1;
+        /* ----- hero (Harpia style) ----- */
+        .hero {
+            text-align: center;
+            padding: 2.5rem 0 3rem;
+        }
+
+        .hero-logo {
+            max-width: 240px;
+            width: 100%;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 8px 24px rgba(139, 92, 246, 0.15));
+        }
+
+        .hero .lead {
+            font-size: 1.3rem;
+            color: #c8c8e4;
+            max-width: 640px;
+            margin: 0 auto 2rem;
+            font-weight: 400;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2.8rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: 0.2s;
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-family: 'Balsamiq Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: #8B5CF6;
+            color: #fff;
+            box-shadow: 0 8px 28px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #a07aff;
+            transform: scale(1.02);
+            box-shadow: 0 12px 36px rgba(139, 92, 246, 0.5);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #d0d0ec;
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .btn-ghost:hover {
+            border-color: #8B5CF6;
+            background: rgba(139, 92, 246, 0.06);
+            color: #fff;
+        }
+
+        /* ----- sections (Harpia-like) ----- */
+        .section {
+            margin: 3.5rem 0 4rem;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding-bottom: 0.8rem;
+        }
+
+        .section-head h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f0f0ff, #c4b0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-head p {
+            color: #9a9ab8;
+        }
+
+        .section-head a {
+            color: #8B5CF6;
+            font-weight: 700;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .section-head a:hover {
+            color: #b69eff;
+        }
+
+        /* ----- grid cards ----- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: rgba(16, 16, 30, 0.6);
+            backdrop-filter: blur(6px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            overflow: hidden;
+            transition: 0.25s;
+            padding: 0.8rem 0.8rem 1.2rem;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(139, 92, 246, 0.2);
+            box-shadow: 0 20px 36px -16px rgba(0, 0, 0, 0.8);
+        }
+
+        .card .thumb {
+            aspect-ratio: 1 / 1;
+            background: #10101a;
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 0.6rem;
+        }
+
+        .card .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #e0e0f0;
+            line-height: 1.3;
+        }
+
+        .card h3 a {
+            color: inherit;
+        }
+
+        .card h3 a:hover {
+            color: #b8a6ff;
+        }
+
+        /* ----- карусели (арты + персонажи) ----- */
+        .carousel-wrapper {
+            margin: 2.8rem 0 2rem;
+        }
+
+        .carousel-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #dedef2;
+        }
+
+        .carousel-title i {
+            color: #8B5CF6;
+            font-size: 1.6rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #0b0b14;
+            border: 1px solid #26263a;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+            will-change: transform;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #10101c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #7a7a9a;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-slide.char-slide {
+            background: #0b0b14;
+        }
+
+        .carousel-slide.char-slide img {
+            object-fit: contain;
+            padding: 1rem;
+            background: transparent;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 60px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.2s;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: #8B5CF6;
+            border-color: #8B5CF6;
+            box-shadow: 0 0 24px rgba(139, 92, 246, 0.4);
+        }
+
+        .carousel-btn.prev {
+            left: 16px;
+        }
+        .carousel-btn.next {
+            right: 16px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 1rem 0 0.4rem;
+        }
+
+        .carousel-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 20px;
+            background: #3a3a52;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+
+        .carousel-dots span.active {
+            background: #8B5CF6;
+            width: 28px;
+        }
+
+        /* ----- footer (Harpia style) ----- */
+        .site-footer {
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 2.5rem 0 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2rem 3rem;
+        }
+
+        .footer-grid .brand {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-grid .brand i {
+            font-size: 1.4rem;
+        }
+
+        .footer-grid h4 {
+            color: #d0d0ec;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .footer-grid ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .footer-grid ul a {
+            color: #9a9ab8;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .footer-grid ul a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            margin-top: 2.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6a6a88;
+        }
+
+        .muted {
+            color: #7a7a9a;
+        }
+
+        @media (max-width: 700px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 450px) {
-            .screenshots-grid {
+            .footer-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
         }
 
-        /*Кнопка CTA*/
-        .btn-cta {
+        /* helpers */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* страница компании (скрыта по умолчанию) */
+        .page {
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0.3; transform: translateY(12px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-link {
             display: inline-block;
-            background: #5D02FA;
-            color: #fff;
-            font-weight: 700;
-            padding: 0.8rem 2.8rem;
+            margin-top: 1rem;
+            color: #a0a0c0;
+            border: 1px solid #2a2a44;
+            padding: 0.5rem 2rem;
             border-radius: 60px;
-            letter-spacing: 0.5px;
-            border: none;
             transition: 0.2s;
-            margin-top: 0.5rem;
-            box-shadow: 0 6px 16px rgba(93, 2, 250, 0.3);
+            font-weight: 700;
         }
 
-            .btn-cta:hover {
-                background: #7a2aff;
-                transform: scale(1.02);
-                box-shadow: 0 8px 22px rgba(93, 2, 250, 0.5);
-            }
-
-        /*Ссылки внизу страницы*/
-        .game-footer-links {
-            margin-top: 3rem;
-            padding-top: 1.8rem;
-            border-top: 1px solid #222;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
+        .back-link:hover {
+            border-color: #8B5CF6;
+            color: #fff;
+            background: rgba(139, 92, 246, 0.06);
         }
 
-            .game-footer-links a {
-                background: #121212;
-                padding: 0.6rem 2rem;
-                border-radius: 60px;
-                font-weight: 500;
-                color: #ccc;
-                border: 1px solid #2a2a2a;
-                transition: 0.2s;
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-            }
-
-                .game-footer-links a i {
-                    color: #2ebe75;
-                }
-
-                .game-footer-links a:hover {
-                    background: #1e1e1e;
-                    color: #fff;
-                    border-color: #5D02FA;
-                    transform: translateY(-2px);
-                }
-
-        /*СТРАНИЦА 2: О РАЗРАБОТЧИКЕ КЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕК*/
-
-            .page-dev h1 {
-                font-size: 2.8rem;
-                font-weight: 800;
-                color: #FA0130;
-                letter-spacing: -0.5px;
-                margin-bottom: 0.2rem;
-            }
-
-            .page-dev .dev-tagline {
-                color: #FA0130;
-                font-size: 1.1rem;
-                margin-bottom: 2rem;
-                border-left: 4px solid #FA0130;
-                padding-left: 1rem;
-            }
-
-        /*Иконка*/
-        .dev-icon {
-            color: #FA0130;
-            margin-right: 6px;
-            font-size: 1rem;
+        /* data-i18n elements */
+        [data-i18n] {
+            transition: opacity 0.15s;
         }
-
-        .dev-card {
-            background: #0c0c0c;
-            padding: 2rem;
-            border-radius: 24px;
-            border: 1px solid #1f1f1f;
-        }
-
-            .dev-card p {
-                margin-bottom: 1rem;
-                color: #d0d0d0;
-            }
-
-            .dev-card .highlight-red {
-                color: #FA0130;
-                font-weight: 600;
-            }
-
-        .dev-social {
-            display: flex;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-            .dev-social a {
-                background: #161616;
-                padding: 0.5rem 1.4rem;
-                border-radius: 40px;
-                color: #ccc;
-                border: 1px solid #2a2a2a;
-                transition: 0.15s;
-                font-size: 0.95rem;
-            }
-
-                .dev-social a i {
-                    color: #FA0130;
-                    margin-right: 8px;
-                }
-
-                .dev-social a:hover {
-                    background: #1f1f1f;
-                    border-color: #FA0130;
-                    color: #fff;
-                }
-
-        /*СТРАНИЦА 3: О КОМПАНИИ ЧЕБУРЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕК*/
-
-            .page-company h1 {
-                font-size: 2.8rem;
-                font-weight: 800;
-                color: #FA0130;
-                letter-spacing: -0.5px;
-                margin-bottom: 0.2rem;
-            }
-
-        .page-company .company-sub {
-            color: #FA0130;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            border-left: 4px solid #FA0130;
-            padding-left: 1rem;
-        }
-
-        /*Иконка*/
-        .company-icon {
-            color: #FA0130;
-            margin-right: 8px;
-            width: 1.6rem;
-            text-align: center;
-            font-size: 1.2rem;
-        }
-
-        .company-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            background: #0c0c0c;
-            padding: 1.8rem;
-            border-radius: 24px;
-            border: 1px solid #1f1f1f;
-        }
-
-            .company-grid .info-block {
-                background: #111;
-                padding: 1.5rem;
-                border-radius: 18px;
-                border-left: 4px solid #FA0130;
-            }
-
-                .company-grid .info-block h3 {
-                    color: #FA0130;
-                    margin-bottom: 0.5rem;
-                    font-size: 1.2rem;
-                }
-
-                .company-grid .info-block p {
-                    color: #c0c0c0;
-                }
-
-                .company-grid .info-block i {
-                    color: #FA0130;
-                    margin-right: 8px;
-                    width: 1.4rem;
-                }
-
-        @media (max-width: 650px) {
-            .company-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .page-game h1,
-            .page-dev h1,
-            .page-company h1 {
-                font-size: 2.2rem;
-            }
-        }
-
-        /*дополнительный акцент*/
-        .text-muted {
-            color: #777;
-            font-size: 0.9rem;
-        }
-
-        .mt-2 {
-            margin-top: 1.2rem;
-        }
-
-        .mb-1 {
-            margin-bottom: 0.5rem;
-        }
-
-        .flex-center {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /*ссылки на страницах*/
-        .back-to-game {
-            margin-top: 2.5rem;
-            text-align: center;
-        }
-
-            .back-to-game a {
-                color: #aaa;
-                border: 1px solid #2a2a2a;
-                padding: 0.5rem 2rem;
-                border-radius: 60px;
-                transition: 0.2s;
-                display: inline-block;
-            }
-
-                .back-to-game a:hover {
-                    color: #fff;
-                    border-color: #FA0130;
-                    background: #1a1a1a;
-                }
-
-            .back-to-game i {
-                margin-right: 8px;
-            }
     </style>
 </head>
 <body>
-    <div class="container">
 
-        <!--СТРАНИЦА 1: ОБ ИГРЕ-->
-        <div id="page-game" class="page active page-game">
-            <h1>Sword of Salvation</h1>
-            <div class="subhead"><i class="fas fa-bolt" style="color:#2ebe75;"></i> Погрузитесь в эпичные сражения с ордами монстров</div>
+    <!-- ========== HEADER (Harpia-like) ========== -->
+    <header class="site-header">
+        <nav class="nav container">
+            <a class="brand" href="#" aria-label="Sword of Salvation — home">
+                <i class="fas fa-dragon"></i> <span data-i18n="brand">Sword of Salvation</span>
+            </a>
 
-            <!--обложка и иконка-->
-            <div class="hero-block">
-                <div class="cover-wrapper">
-                    <img src="Desk.png" alt="Обложка игры" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active" data-page="game" data-i18n="nav_home">Home</a></li>
+                <li><a href="#" data-page="company" data-i18n="nav_company">Company</a></li>
+                <li>
+                    <select class="lang-select" id="langSwitcher" aria-label="Language">
+                        <option value="en">English</option>
+                        <option value="ru">Русский</option>
+                    </select>
+                </li>
+                <li>
+                    <button class="theme-toggle" type="button" role="switch" aria-label="Toggle theme" aria-checked="true">
+                        <span class="tt-thumb" aria-hidden="true"></span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- ========== СТРАНИЦА: ОБ ИГРЕ ========== -->
+        <div id="page-game" class="page active">
+
+            <!-- HERO -->
+            <section class="hero">
+                <div class="hero-logo">
+                    <i class="fas fa-dragon" style="font-size: 5rem; color: #8B5CF6; filter: drop-shadow(0 8px 32px rgba(139,92,246,0.4));"></i>
                 </div>
-                <div class="icon-wrapper">
-                    <img src="icon.png" alt="Иконка игры" style="width:100%; height:100%; object-fit:contain;">
+                <h1 class="visually-hidden">Sword of Salvation — epic action-RPG</h1>
+                <p class="lead" data-i18n="hero_lead">Immerse yourself in epic battles against hordes of monsters in a dark fantasy world.</p>
+                <div class="actions">
+                    <a href="#" class="btn btn-primary"><i class="fas fa-play"></i> <span data-i18n="hero_trailer">Watch Trailer</span></a>
+                    <a href="#" class="btn btn-ghost" data-i18n="hero_more">Learn More</a>
                 </div>
-            </div>
+            </section>
 
-            <div class="game-description">
-                <p>
-                    <strong style="color:#5D02FA;">▸</strong> Первая мобильная top-down Action-RPG, сочетающая глубокую систему боя, атмосферный пиксельный мир и свободу исследований в открытом мире.</p>
-                <p><strong style="color:#2ebe75;">▸</strong> Раскройте древние тайны и решите - уничтожить всех демонов... или найти иной путь?</p>
-                <p><strong style="color:#5D02FA;">▸</strong> Создано небольшой командой энтузиастов, вложивших душу в каждый пиксель.</p>
-            </div>
-
-            <!--Фичи-->
-            <div class="feature-grid">
-                <div class="feature-item"><i class="fas fa-skull"></i><span>Тёмное фэнтези, где за каждым углом таится неизвестная опасность.</span><small>Атмосфера</small></div>
-                <div class="feature-item"><i class="fas fa-robot"></i><span>Различные виды монстров. К каждому необходим свой подход.</span><small>Противники</small></div>
-                <div class="feature-item"><i class="fas fa-cubes"></i><span>Нет типичных улучшений показателей. Лишь разнообразие оружия на свой цвет и вкус.</span><small>Система прокачки</small></div>
-                <div class="feature-item"><i class="fas fa-music"></i><span>От электроники до оркестровой музыки. Смеси жанров, дающие новый взгляд на музыку.</span><small>Саундтрек</small></div>
-            </div>
-
-            <!--Скрины-->
-            <div class="screenshots-grid">
-                <div class="screenshot-placeholder">
-                    <img src="Screenshot1.jpg" alt="Скриншот 1" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+            <!-- ОБ ИГРЕ -->
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <h2 data-i18n="about_title">About the Game</h2>
+                        <p data-i18n="about_sub">The first mobile top-down Action-RPG with soul.</p>
+                    </div>
+                    <a href="#" data-i18n="about_more">More →</a>
                 </div>
-                <div class="screenshot-placeholder">
-                    <img src="Screenshot2.jpg" alt="Скриншот 1" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
-                </div>
-                <div class="screenshot-placeholder">
-                    <img src="Screenshot3.jpg" alt="Скриншот 1" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
-                </div>
-                <div class="screenshot-placeholder">
-                    <img src="Screenshot4.jpg" alt="Скриншот 1" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
-                </div>
-            </div>
 
-            <!--Ссылки-->
-            <a href="https://m.vk.com/video-233274993_456239017?from=post&list=296014dc5d3bfb0885&post=-233274993_2" target="_blank" class="btn-cta"><i class="fas fa-play"></i> Смотреть трейлер</a>
-            <span style="margin-left: 1rem; color: #666; font-size: 0.9rem;">или <a href="https://m.vk.com/trivi_games" target="_blank" style="color:#2ebe75;">подробнее</a></span>
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #10101c; border-radius: 24px; overflow: hidden; aspect-ratio: 16/9; border: 1px solid #2a2a44;">
+                        <img src="https://via.placeholder.com/800x450/1a1a2e/8B5CF6?text=Cover+Art" alt="Cover" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div style="background: #10101c; border-radius: 24px; overflow: hidden; aspect-ratio: 1/1; border: 1px solid #2a2a44;">
+                        <img src="https://via.placeholder.com/300/1a1a2e/8B5CF6?text=Icon" alt="Icon" style="width:100%; height:100%; object-fit:contain; padding:0.8rem;">
+                    </div>
+                </div>
 
-            <!--Ссылки на другие страницы-->
-            <div class="game-footer-links">
-                <a href="#" class="link-dev"><i class="fas fa-user-astronaut"></i> О разработчике</a>
-                <a href="#" class="link-company"><i class="fas fa-building"></i> О компании</a>
-            </div>
+                <div style="background: rgba(12,12,22,0.6); backdrop-filter:blur(4px); border-radius: 24px; padding: 1.8rem 2rem; border-left: 6px solid #8B5CF6; margin-bottom: 1.8rem;">
+                    <p data-i18n="about_p1"><strong>▸</strong> Uncover ancient secrets, fight hordes of demons and decide — destroy everyone or find another way.</p>
+                    <p data-i18n="about_p2"><strong>▸</strong> Deep combat system, atmospheric pixel art and an open world.</p>
+                    <p data-i18n="about_p3"><strong>▸</strong> Created by a small team of enthusiasts who put their soul into every pixel.</p>
+                </div>
+
+                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(160px,1fr));">
+                    <div style="background:rgba(20,20,34,0.5); border-radius:20px; padding:1.2rem; text-align:center; border:1px solid #2a2a44;">
+                        <i class="fas fa-skull" style="font-size:2rem; color:#8B5CF6;"></i>
+                        <span style="display:block; font-weight:700;" data-i18n="feature_dark">Dark Fantasy</span>
+                        <small style="color:#8888aa;" data-i18n="feature_dark_sub">Danger around every corner</small>
+                    </div>
+                    <div style="background:rgba(20,20,34,0.5); border-radius:20px; padding:1.2rem; text-align:center; border:1px solid #2a2a44;">
+                        <i class="fas fa-robot" style="font-size:2rem; color:#8B5CF6;"></i>
+                        <span style="display:block; font-weight:700;" data-i18n="feature_enemies">Smart Enemies</span>
+                        <small style="color:#8888aa;" data-i18n="feature_enemies_sub">Different approach to each</small>
+                    </div>
+                    <div style="background:rgba(20,20,34,0.5); border-radius:20px; padding:1.2rem; text-align:center; border:1px solid #2a2a44;">
+                        <i class="fas fa-cubes" style="font-size:2rem; color:#8B5CF6;"></i>
+                        <span style="display:block; font-weight:700;" data-i18n="feature_progression">Flexible Progression</span>
+                        <small style="color:#8888aa;" data-i18n="feature_progression_sub">Weapons for every taste</small>
+                    </div>
+                    <div style="background:rgba(20,20,34,0.5); border-radius:20px; padding:1.2rem; text-align:center; border:1px solid #2a2a44;">
+                        <i class="fas fa-music" style="font-size:2rem; color:#8B5CF6;"></i>
+                        <span style="display:block; font-weight:700;" data-i18n="feature_soundtrack">Soundtrack</span>
+                        <small style="color:#8888aa;" data-i18n="feature_soundtrack_sub">Electronic + orchestral</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- СЛАЙДШОУ АРТОВ -->
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <h2 data-i18n="art_title">Artworks</h2>
+                        <p data-i18n="art_sub">Visual style of the game.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-container" id="artCarousel">
+                        <div class="carousel-track" id="artTrack">
+                            <div class="carousel-slide"><img src="https://via.placeholder.com/1200x675/1a1a2e/8B5CF6?text=Art+1" alt="Art 1" /></div>
+                            <div class="carousel-slide"><img src="https://via.placeholder.com/1200x675/1a1a2e/8B5CF6?text=Art+2" alt="Art 2" /></div>
+                            <div class="carousel-slide"><img src="https://via.placeholder.com/1200x675/1a1a2e/8B5CF6?text=Art+3" alt="Art 3" /></div>
+                        </div>
+                        <button class="carousel-btn prev" data-carousel="art"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next" data-carousel="art"><i class="fas fa-chevron-right"></i></button>
+                        <div class="carousel-dots" id="artDots"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- СЛАЙДШОУ ПЕРСОНАЖЕЙ (PNG) -->
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <h2 data-i18n="char_title">Characters</h2>
+                        <p data-i18n="char_sub">Heroes and enemies.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-container" id="charCarousel">
+                        <div class="carousel-track" id="charTrack">
+                            <div class="carousel-slide char-slide"><img src="https://via.placeholder.com/1200x675/0b0b14/8B5CF6?text=PNG+Char+1" alt="Character 1" /></div>
+                            <div class="carousel-slide char-slide"><img src="https://via.placeholder.com/1200x675/0b0b14/8B5CF6?text=PNG+Char+2" alt="Character 2" /></div>
+                            <div class="carousel-slide char-slide"><img src="https://via.placeholder.com/1200x675/0b0b14/8B5CF6?text=PNG+Char+3" alt="Character 3" /></div>
+                        </div>
+                        <button class="carousel-btn prev" data-carousel="char"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next" data-carousel="char"><i class="fas fa-chevron-right"></i></button>
+                        <div class="carousel-dots" id="charDots"></div>
+                    </div>
+                </div>
+            </section>
+
         </div>
 
-        <!--СТРАНИЦА 2: О РАЗРАБОТЧИКЕ-->
-        <div id="page-dev" class="page page-dev">
-            <h1>О разработчике</h1>
-
-            <div class="dev-tagline">
-                <i class="fas fa-code"></i> Муллакаев Камиль
-            </div>
-
-            <div style="text-align: left; margin-bottom: 1.5rem;">
-                <img src="DeveloperIcon.jpg" alt="Иконка разработчика" style="width: 200px; height: 200px; object-fit: contain; border-radius: 12px; border: 2px solid #FA0130;">
-            </div>
-
-            <div class="dev-card">
-                <p><span class="highlight-red"><i class="fas fa-user dev-icon"></i></span> <strong> Йоу. Я — разработчик</strong> этой игры. Являюсь студентом КНИТУ-КАИ
-                Института КТЗИ.
-                Я начал работу над этой игрой ещё в 2022 и с тех пор активно занимаюсь программированием.</p>
-                <p><span class="highlight-red"><i class="fas fa-gamepad dev-icon"></i></span> Обожаю искусство, поэтому люблю создавать что то оригинальное и экспериментировать с механиками игры.</p>
-                <p><span class="highlight-red"><i class="fas fa-rocket dev-icon"></i></span> Вдохновляюсь современными слэшерами и японскими RPG. Для связи используйте соцсети ниже.</p>
-                <div class="dev-social">
-                    <a href="https://m.vk.com/fireway31" target="_blank"><i class="fab fa-vk"></i> VK</a>
-                    <a href="https://github.com/Retro31k" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="mailto:kamil.me@mail.ru" target="_blank"><i class="fas fa-envelope"></i> kamil.me@mail.ru</a>
+        <!-- ========== СТРАНИЦА: КОМПАНИЯ ========== -->
+        <div id="page-company" class="page">
+            <section class="section">
+                <div style="display:flex; gap:2rem; flex-wrap:wrap; align-items:center; margin-bottom:2rem;">
+                    <div style="background:#10101c; border-radius:32px; width:140px; height:140px; display:flex; align-items:center; justify-content:center; border:2px solid #8B5CF6;">
+                        <i class="fas fa-dragon" style="font-size:4rem; color:#8B5CF6;"></i>
+                    </div>
+                    <div>
+                        <h2 style="font-size:2.4rem; font-weight:700; background:linear-gradient(135deg,#f0f0ff,#b8a6ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;" data-i18n="company_name">Trivi</h2>
+                        <p style="color:#b0b0cc; max-width:500px;" data-i18n="company_desc">A small team of enthusiasts creating games with soul. Our goal is to give players unique emotions.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="back-to-game">
-                <a href="#" class="back-link"><i class="fas fa-arrow-left"></i> Вернуться к игре</a>
-            </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+                    <div style="background:rgba(16,16,30,0.6); backdrop-filter:blur(4px); padding:1.6rem; border-radius:24px; border-left:4px solid #8B5CF6;">
+                        <h3 style="color:#c8baff; display:flex; align-items:center; gap:10px;"><i class="fas fa-users" style="color:#8B5CF6;"></i> <span data-i18n="company_who">Who we are</span></h3>
+                        <p style="color:#c0c0da;" data-i18n="company_who_text">We are a team of developers, designers and musicians united by a love for the action-RPG genre. Together since 2023.</p>
+                    </div>
+                    <div style="background:rgba(16,16,30,0.6); backdrop-filter:blur(4px); padding:1.6rem; border-radius:24px; border-left:4px solid #8B5CF6;">
+                        <h3 style="color:#c8baff; display:flex; align-items:center; gap:10px;"><i class="fas fa-calendar-alt" style="color:#8B5CF6;"></i> <span data-i18n="company_history">History</span></h3>
+                        <p style="color:#c0c0da;" data-i18n="company_history_text">We started with a small prototype in 2022, and in 2023 we assembled a team. Now we are actively working on the final version.</p>
+                    </div>
+                    <div style="background:rgba(16,16,30,0.6); backdrop-filter:blur(4px); padding:1.6rem; border-radius:24px; border-left:4px solid #8B5CF6;">
+                        <h3 style="color:#c8baff; display:flex; align-items:center; gap:10px;"><i class="fas fa-globe" style="color:#8B5CF6;"></i> <span data-i18n="company_mission">Mission</span></h3>
+                        <p style="color:#c0c0da;" data-i18n="company_mission_text">Create memorable mobile and computer games that bring fresh air to the Russian game development scene.</p>
+                    </div>
+                    <div style="background:rgba(16,16,30,0.6); backdrop-filter:blur(4px); padding:1.6rem; border-radius:24px; border-left:4px solid #8B5CF6;">
+                        <h3 style="color:#c8baff; display:flex; align-items:center; gap:10px;"><i class="fas fa-handshake" style="color:#8B5CF6;"></i> <span data-i18n="company_contacts">Contacts</span></h3>
+                        <p style="color:#c0c0da;"><i class="fas fa-envelope" style="color:#8B5CF6; width:1.4rem;"></i> trivigamesss@gmail.com</p>
+                        <p style="margin-top:6px;"><i class="fab fa-vk" style="color:#8B5CF6; width:1.4rem;"></i> vk.com/trivi_games</p>
+                    </div>
+                </div>
+
+                <a href="#" class="back-link" id="backToGame"><i class="fas fa-arrow-left"></i> <span data-i18n="back_to_game">Back to game</span></a>
+            </section>
         </div>
 
-        <!--СТРАНИЦА 3: О КОМПАНИИ-->
-        <div id="page-company" class="page page-company">
-            <h1>О компании</h1>
-            <div class="company-sub">
-                <i class="fas fa-flag"></i> Trivi
-            </div>
-            <div style="text-align: left; margin-bottom: 1.5rem;">
-                <img src="CompanyIcon.jpg" alt="Иконка компании" style="width: 200px; height: 200px; object-fit: contain; border-radius: 12px; border: 2px solid #FA0130;">
-            </div>
+    </main>
 
-            <div class="company-grid">
-                <div class="info-block">
-                    <h3><i class="fas fa-users company-icon"></i> Кто мы</h3>
-                    <p>Небольшая команда энтузиастов, создающая игры с душой. Наша цель — дарить игрокам уникальные эмоции.</p>
-                </div>
-                <div class="info-block">
-                    <h3><i class="fas fa-calendar-alt company-icon"></i> История</h3>
-                    <p>Работаем над игрой вместе с 2023 года. Каждый вносит свой вклад.</p>
-                </div>
-                <div class="info-block">
-                    <h3><i class="fas fa-globe company-icon"></i> Миссия</h3>
-                    <p>Делать достойные для российского геймдева мобильные и компьютерные игры, которые запоминаются.</p>
-                </div>
-                <div class="info-block">
-                    <h3><i class="fas fa-handshake company-icon"></i> Контакты</h3>
-                    <p><i class="fas fa-envelope company-icon"></i> trivigamesss@gmail.com </p>
-                </div>
+    <!-- ========== FOOTER (Harpia-like) ========== -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="brand"><i class="fas fa-dragon"></i> <span data-i18n="brand">Sword of Salvation</span></div>
+                <p class="muted" data-i18n="footer_sub">Epic action-RPG in a dark fantasy world.</p>
             </div>
-
-            <div class="back-to-game">
-                <a href="#" class="back-link"><i class="fas fa-arrow-left"></i> Вернуться к игре</a>
+            <div>
+                <h4 data-i18n="footer_overview">Overview</h4>
+                <ul>
+                    <li><a href="#" data-i18n="footer_home">Home</a></li>
+                    <li><a href="#" data-i18n="footer_games">Games</a></li>
+                    <li><a href="#" data-i18n="footer_news">News</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 data-i18n="footer_contact">Contact</h4>
+                <ul>
+                    <li><a href="#"><i class="fab fa-vk"></i> VK</a></li>
+                    <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    <li><a href="#"><i class="fas fa-crown"></i> Boosty</a></li>
+                    <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
+                </ul>
             </div>
         </div>
+        <div class="container footer-bottom">
+            <small>© 2026 Sword of Salvation. <span data-i18n="footer_rights">All rights reserved.</span></small>
+        </div>
+    </footer>
 
-    </div>
-
+    <!-- ========== SCRIPTS ========== -->
     <script>
-        (function () {
-            const navButtons = document.querySelectorAll('.nav-pages button');
-            const pages = {
-                game: document.getElementById('page-game'),
-                dev: document.getElementById('page-dev'),
-                company: document.getElementById('page-company')
+        (function() {
+            // ---------- ЛОКАЛИЗАЦИЯ ----------
+            const translations = {
+                en: {
+                    brand: 'Sword of Salvation',
+                    nav_home: 'Home',
+                    nav_company: 'Company',
+                    hero_lead: 'Immerse yourself in epic battles against hordes of monsters in a dark fantasy world.',
+                    hero_trailer: 'Watch Trailer',
+                    hero_more: 'Learn More',
+                    about_title: 'About the Game',
+                    about_sub: 'The first mobile top-down Action-RPG with soul.',
+                    about_more: 'More →',
+                    about_p1: '<strong>▸</strong> Uncover ancient secrets, fight hordes of demons and decide — destroy everyone or find another way.',
+                    about_p2: '<strong>▸</strong> Deep combat system, atmospheric pixel art and an open world.',
+                    about_p3: '<strong>▸</strong> Created by a small team of enthusiasts who put their soul into every pixel.',
+                    feature_dark: 'Dark Fantasy',
+                    feature_dark_sub: 'Danger around every corner',
+                    feature_enemies: 'Smart Enemies',
+                    feature_enemies_sub: 'Different approach to each',
+                    feature_progression: 'Flexible Progression',
+                    feature_progression_sub: 'Weapons for every taste',
+                    feature_soundtrack: 'Soundtrack',
+                    feature_soundtrack_sub: 'Electronic + orchestral',
+                    art_title: 'Artworks',
+                    art_sub: 'Visual style of the game.',
+                    char_title: 'Characters',
+                    char_sub: 'Heroes and enemies.',
+                    company_name: 'Trivi',
+                    company_desc: 'A small team of enthusiasts creating games with soul. Our goal is to give players unique emotions.',
+                    company_who: 'Who we are',
+                    company_who_text: 'We are a team of developers, designers and musicians united by a love for the action-RPG genre. Together since 2023.',
+                    company_history: 'History',
+                    company_history_text: 'We started with a small prototype in 2022, and in 2023 we assembled a team. Now we are actively working on the final version.',
+                    company_mission: 'Mission',
+                    company_mission_text: 'Create memorable mobile and computer games that bring fresh air to the Russian game development scene.',
+                    company_contacts: 'Contacts',
+                    back_to_game: 'Back to game',
+                    footer_sub: 'Epic action-RPG in a dark fantasy world.',
+                    footer_overview: 'Overview',
+                    footer_home: 'Home',
+                    footer_games: 'Games',
+                    footer_news: 'News',
+                    footer_contact: 'Contact',
+                    footer_rights: 'All rights reserved.'
+                },
+                ru: {
+                    brand: 'Sword of Salvation',
+                    nav_home: 'Главная',
+                    nav_company: 'Компания',
+                    hero_lead: 'Погрузитесь в эпичные сражения с ордами монстров в тёмном фэнтези-мире.',
+                    hero_trailer: 'Смотреть трейлер',
+                    hero_more: 'Узнать больше',
+                    about_title: 'Об игре',
+                    about_sub: 'Первая мобильная top-down Action-RPG с душой.',
+                    about_more: 'Подробнее →',
+                    about_p1: '<strong>▸</strong> Раскройте древние тайны, сражайтесь с ордами демонов и решите — уничтожить всех или найти иной путь.',
+                    about_p2: '<strong>▸</strong> Глубокая боевая система, атмосферный пиксель-арт и открытый мир.',
+                    about_p3: '<strong>▸</strong> Создано небольшой командой энтузиастов, вложивших душу в каждый пиксель.',
+                    feature_dark: 'Тёмное фэнтези',
+                    feature_dark_sub: 'Опасность за углом',
+                    feature_enemies: 'Умные враги',
+                    feature_enemies_sub: 'Свой подход к каждому',
+                    feature_progression: 'Гибкая прокачка',
+                    feature_progression_sub: 'Оружие на любой вкус',
+                    feature_soundtrack: 'Саундтрек',
+                    feature_soundtrack_sub: 'Электроника + оркестр',
+                    art_title: 'Арты',
+                    art_sub: 'Визуальный стиль игры.',
+                    char_title: 'Персонажи',
+                    char_sub: 'Герои и противники.',
+                    company_name: 'Trivi',
+                    company_desc: 'Небольшая команда энтузиастов, создающая игры с душой. Наша цель — дарить игрокам уникальные эмоции.',
+                    company_who: 'Кто мы',
+                    company_who_text: 'Мы — команда разработчиков, дизайнеров и музыкантов, объединённых любовью к жанру action-RPG. Вместе с 2023 года.',
+                    company_history: 'История',
+                    company_history_text: 'Начали с небольшого прототипа в 2022, а в 2023 собрали команду. Сейчас активно работаем над финальной версией.',
+                    company_mission: 'Миссия',
+                    company_mission_text: 'Создавать запоминающиеся мобильные и компьютерные игры, которые вносят свежий ветер в российский геймдев.',
+                    company_contacts: 'Контакты',
+                    back_to_game: 'Вернуться к игре',
+                    footer_sub: 'Эпичная action-RPG в тёмном фэнтези-мире.',
+                    footer_overview: 'Обзор',
+                    footer_home: 'Главная',
+                    footer_games: 'Игры',
+                    footer_news: 'Новости',
+                    footer_contact: 'Связаться',
+                    footer_rights: 'Все права защищены.'
+                }
             };
 
-            function switchPage(pageId) {
-                Object.values(pages).forEach(p => p.classList.remove('active'));
-                if (pages[pageId]) pages[pageId].classList.add('active');
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                const activeBtn = Array.from(navButtons).find(btn => btn.dataset.page === pageId);
-                if (activeBtn) activeBtn.classList.add('active');
+            let currentLang = 'en';
+
+            function setLanguage(lang) {
+                currentLang = lang;
+                document.documentElement.lang = lang;
+                const t = translations[lang] || translations.en;
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (t[key] !== undefined) {
+                        el.innerHTML = t[key];
+                    }
+                });
+                const select = document.getElementById('langSwitcher');
+                if (select) select.value = lang;
+                localStorage.setItem('preferredLanguage', lang);
             }
 
-            // Обработчики для навигационных кнопок
-            navButtons.forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    const page = this.dataset.page;
-                    if (page) switchPage(page);
+            const langSwitcher = document.getElementById('langSwitcher');
+            if (langSwitcher) {
+                langSwitcher.addEventListener('change', function() {
+                    setLanguage(this.value);
                 });
-            });
-            // Ссылки внизу страницы игры
-            const linkDev = document.querySelector('.link-dev');
-            const linkCompany = document.querySelector('.link-company');
-            if (linkDev) linkDev.addEventListener('click', function (e) {
-                e.preventDefault();
-                switchPage('dev');
-            });
-            if (linkCompany) linkCompany.addEventListener('click', function (e) {
-                e.preventDefault();
-                switchPage('company');
-            });
+            }
 
-            // Все ссылки с возвратом к игре
-            document.querySelectorAll('.back-link').forEach(link => {
-                link.addEventListener('click', function (e) {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            setLanguage(savedLang);
+
+            // ---------- мобильное меню ----------
+            const toggle = document.querySelector('.nav-toggle');
+            const navLinks = document.getElementById('navLinks');
+            if (toggle && navLinks) {
+                toggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('open');
+                    const expanded = navLinks.classList.contains('open');
+                    this.setAttribute('aria-expanded', expanded);
+                });
+            }
+
+            // ---------- переключение страниц ----------
+            const navItems = document.querySelectorAll('.nav-links a[data-page]');
+            const pageGame = document.getElementById('page-game');
+            const pageCompany = document.getElementById('page-company');
+
+            function switchPage(pageId) {
+                pageGame.classList.remove('active');
+                pageCompany.classList.remove('active');
+                if (pageId === 'game') pageGame.classList.add('active');
+                else if (pageId === 'company') pageCompany.classList.add('active');
+
+                navItems.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.page === pageId) btn.classList.add('active');
+                });
+            }
+
+            navItems.forEach(btn => {
+                btn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    switchPage('game');
+                    switchPage(this.dataset.page);
                 });
             });
 
-            // Защита от перезагрузки для всех ссылок на #
+            document.getElementById('backToGame').addEventListener('click', function(e) {
+                e.preventDefault();
+                switchPage('game');
+            });
+
+            // ---------- КАРУСЕЛИ ----------
+            function initCarousel(carouselId, trackId, dotsId) {
+                const container = document.getElementById(carouselId);
+                if (!container) return;
+                const track = document.getElementById(trackId);
+                if (!track) return;
+                const slides = track.querySelectorAll('.carousel-slide');
+                if (slides.length === 0) return;
+                const total = slides.length;
+                let index = 0;
+                let autoInterval = null;
+
+                const dotsContainer = document.getElementById(dotsId);
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = '';
+                    for (let i = 0; i < total; i++) {
+                        const dot = document.createElement('span');
+                        dot.dataset.index = i;
+                        if (i === 0) dot.classList.add('active');
+                        dot.addEventListener('click', function() {
+                            goTo(parseInt(this.dataset.index));
+                        });
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+
+                function updateDots() {
+                    if (!dotsContainer) return;
+                    const dots = dotsContainer.querySelectorAll('span');
+                    dots.forEach((d, i) => {
+                        d.classList.toggle('active', i === index);
+                    });
+                }
+
+                function goTo(idx) {
+                    if (idx < 0) idx = total - 1;
+                    else if (idx >= total) idx = 0;
+                    index = idx;
+                    track.style.transform = `translateX(-${index * 100}%)`;
+                    updateDots();
+                    resetAuto();
+                }
+
+                function next() { goTo(index + 1); }
+                function prev() { goTo(index - 1); }
+
+                function resetAuto() {
+                    if (autoInterval) clearInterval(autoInterval);
+                    autoInterval = setInterval(() => { next(); }, 4500);
+                }
+
+                const prevBtn = container.querySelector('.prev');
+                const nextBtn = container.querySelector('.next');
+                if (prevBtn) prevBtn.addEventListener('click', function(e) { e.stopPropagation(); prev(); });
+                if (nextBtn) nextBtn.addEventListener('click', function(e) { e.stopPropagation(); next(); });
+
+                container.addEventListener('mouseenter', function() {
+                    if (autoInterval) clearInterval(autoInterval);
+                });
+                container.addEventListener('mouseleave', function() {
+                    resetAuto();
+                });
+
+                resetAuto();
+            }
+
+            initCarousel('artCarousel', 'artTrack', 'artDots');
+            initCarousel('charCarousel', 'charTrack', 'charDots');
+
+            // ---------- защита от пустых ссылок ----------
             document.querySelectorAll('a[href="#"]').forEach(a => {
-                a.addEventListener('click', function (e) {
+                a.addEventListener('click', function(e) {
+                    if (this.id === 'backToGame') return;
                     e.preventDefault();
                 });
             });
 
         })();
     </script>
+
 </body>
 </html>
