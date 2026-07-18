@@ -487,14 +487,22 @@
 
         /* ----- Специальные стили для карусели персонажей со статичным фоном ----- */
         .char-carousel-container {
+            text-align: center;
+            padding: 2.5rem 0 3rem;
             position: relative;
-            border-radius: 24px;
             overflow: hidden;
-            border: 1px solid #26263a;
-            background-image: url('https://via.placeholder.com/1200x675/1a1a2e/2a2a4e?text=Dark+Fantasy+Background');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: #0b0b10;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Растягиваем на всю ширину */
+            width: 100vw;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding-left: calc(50% - 50vw);
+            padding-right: calc(50% - 50vw);
         }
 
             /* Градиент поверх фона для атмосферы */
@@ -505,9 +513,16 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: radial-gradient(ellipse at center, transparent 30%, rgba(11, 11, 20, 0.7) 100%);
-                pointer-events: none;
-                z-index: 1;
+                background-image: url('Desk.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0.5;
+                z-index: 0;
+                /* Растягиваем фон на всю ширину */
+                width: 100vw;
+                left: 50%;
+                transform: translateX(-50%);
             }
 
             .char-carousel-container .carousel-track {
@@ -1277,7 +1292,7 @@
                     <div class="char-carousel-container" id="charCarousel">
                         <div class="carousel-track" id="charTrack">
                             <div class="carousel-slide">
-                                <img src="https://via.placeholder.com/400x600/transparent/8B5CF6?text=PNG+Char+1" alt="Character 1" />
+                                <img src="Player.png" alt="Character 1" />
                             </div>
                             <div class="carousel-slide">
                                 <img src="https://via.placeholder.com/400x600/transparent/f6cb5c?text=PNG+Char+2" alt="Character 2" />
@@ -1689,6 +1704,9 @@
 
         })();
     </script>
+
+</body>
+</html>
 
 </body>
 </html>
