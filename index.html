@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
-        /* ----- reset & base (Harpia-like) ----- */
+        /* ----- reset & base ----- */
         * {
             margin: 0;
             padding: 0;
@@ -40,7 +40,7 @@
             padding: 2rem 1.5rem 3rem;
         }
 
-        /* ----- header / nav (Harpia style) ----- */
+        /* ----- header / nav ----- */
         .site-header {
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             padding: 0.8rem 0;
@@ -58,7 +58,7 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-weight: 700;
             font-size: 1.3rem;
             letter-spacing: -0.3px;
@@ -68,11 +68,22 @@
             background-clip: text;
         }
 
-        .brand i {
-            font-size: 1.8rem;
-            -webkit-text-fill-color: initial;
-            color: #8B5CF6;
-        }
+            .brand .logo-img {
+                height: 80px;
+                width: auto;
+                display: block;
+                -webkit-text-fill-color: initial;
+                filter: drop-shadow(0 2px 12px rgba(92, 246, 181, 0.3));
+                transition: filter 0.3s;
+            }
+
+                .brand .logo-img:hover {
+                    filter: drop-shadow(0 2px 20px rgba(92, 246, 181, 0.5));
+                }
+
+            .brand span {
+                display: inline-block;
+            }
 
         .nav-links {
             display: flex;
@@ -82,62 +93,43 @@
             list-style: none;
         }
 
-        .nav-links a {
-            font-weight: 700;
-            color: #b0b0cc;
-            transition: 0.2s;
-            font-size: 0.95rem;
-            padding: 0.4rem 0;
-            border-bottom: 2px solid transparent;
-        }
+            .nav-links a {
+                font-weight: 700;
+                color: #b0b0cc;
+                transition: 0.2s;
+                font-size: 0.95rem;
+                padding: 0.4rem 0;
+                border-bottom: 2px solid transparent;
+            }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #fff;
-            border-bottom-color: #8B5CF6;
-        }
+                .nav-links a:hover {
+                    color: #fff;
+                    border-bottom-color: #f6cb5c;
+                }
 
-        .nav-links a.active {
-            color: #fff;
-        }
+                .nav-links a.active {
+                    color: #fff;
+                    border-bottom-color: #8B5CF6;
+                }
 
-        .nav-links .lang-select {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid #2a2a44;
-            color: #d0d0e8;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            outline: none;
-            font-family: 'Balsamiq Sans', sans-serif;
-        }
+            .nav-links .lang-select {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid #2a2a44;
+                color: #d0d0e8;
+                padding: 0.3rem 1rem;
+                border-radius: 40px;
+                font-size: 0.85rem;
+                cursor: pointer;
+                outline: none;
+                font-family: 'Balsamiq Sans', sans-serif;
+                transition: 0.2s;
+            }
 
-        .nav-links .lang-select option {
-            background: #151525;
-        }
+                .nav-links .lang-select:hover {
+                    border-color: #f6cb5c;
+                }
 
-        .theme-toggle {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid #2a2a44;
-            width: 44px;
-            height: 28px;
-            border-radius: 40px;
-            cursor: pointer;
-            position: relative;
-            transition: 0.2s;
-        }
 
-        .theme-toggle .tt-thumb {
-            display: block;
-            width: 20px;
-            height: 20px;
-            background: #8B5CF6;
-            border-radius: 50%;
-            margin: 3px 0 0 3px;
-            transition: 0.25s;
-            box-shadow: 0 0 12px rgba(139, 92, 246, 0.3);
-        }
 
         .nav-toggle {
             display: none;
@@ -149,18 +141,19 @@
             padding: 0.3rem;
         }
 
-        .nav-toggle span {
-            display: block;
-            width: 26px;
-            height: 2px;
-            background: #c0c0e0;
-            transition: 0.2s;
-        }
+            .nav-toggle span {
+                display: block;
+                width: 26px;
+                height: 2px;
+                background: #c0c0e0;
+                transition: 0.2s;
+            }
 
         @media (max-width: 820px) {
             .nav-toggle {
                 display: flex;
             }
+
             .nav-links {
                 display: none;
                 width: 100%;
@@ -169,27 +162,94 @@
                 padding-top: 1rem;
                 gap: 0.6rem;
             }
-            .nav-links.open {
-                display: flex;
-            }
-            .nav-links a {
-                padding: 0.5rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+
+                .nav-links.open {
+                    display: flex;
+                }
+
+                .nav-links a {
+                    padding: 0.5rem 0;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+                }
+
+            .brand .logo-img {
+                height: 32px;
             }
         }
 
-        /* ----- hero (Harpia style) ----- */
+        /* ----- hero ----- */
         .hero {
             text-align: center;
             padding: 2.5rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+            background-color: #0b0b10;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Растягиваем на всю ширину */
+            width: 100vw;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding-left: calc(50% - 50vw);
+            padding-right: calc(50% - 50vw);
         }
 
+            /* Фоновое изображение для Hero */
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: url('Desk.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0.5;
+                z-index: 0;
+                /* Растягиваем фон на всю ширину */
+                width: 100vw;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            /* Затемнение поверх фона для лучшей читаемости текста */
+            .hero::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(ellipse at center, transparent 40%, rgba(11, 11, 16, 0.7) 100%);
+                z-index: 1;
+            }
+
+            /* Все контентные элементы Hero должны быть поверх фона */
+            .hero > * {
+                position: relative;
+                z-index: 2;
+            }
+
         .hero-logo {
-            max-width: 240px;
+            max-width: 220px;
             width: 100%;
             margin-bottom: 1.2rem;
-            filter: drop-shadow(0 8px 24px rgba(139, 92, 246, 0.15));
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 20%;
+            filter: drop-shadow(0 8px 32px rgba(139, 92, 246, 0.3));
+            transition: filter 0.3s;
         }
+
+            .hero-logo:hover {
+                filter: drop-shadow(0 8px 48px rgba(139, 92, 246, 0.3));
+            }
 
         .hero .lead {
             font-size: 1.3rem;
@@ -198,6 +258,11 @@
             margin: 0 auto 2rem;
             font-weight: 400;
         }
+
+            .hero .lead strong {
+                color: #f6cb5c;
+                font-weight: 700;
+            }
 
         .actions {
             display: flex;
@@ -224,11 +289,23 @@
             box-shadow: 0 8px 28px rgba(139, 92, 246, 0.3);
         }
 
-        .btn-primary:hover {
-            background: #a07aff;
-            transform: scale(1.02);
-            box-shadow: 0 12px 36px rgba(139, 92, 246, 0.5);
+            .btn-primary:hover {
+                background: #a07aff;
+                transform: scale(1.02);
+                box-shadow: 0 12px 36px rgba(139, 92, 246, 0.5);
+            }
+
+        .btn-secondary {
+            background: #f6cb5c;
+            color: #0b0b10;
+            box-shadow: 0 8px 28px rgba(246, 203, 92, 0.3);
         }
+
+            .btn-secondary:hover {
+                background: #ffd96e;
+                transform: scale(1.02);
+                box-shadow: 0 12px 36px rgba(246, 203, 92, 0.5);
+            }
 
         .btn-ghost {
             background: transparent;
@@ -236,13 +313,25 @@
             border-color: rgba(255, 255, 255, 0.12);
         }
 
-        .btn-ghost:hover {
-            border-color: #8B5CF6;
-            background: rgba(139, 92, 246, 0.06);
-            color: #fff;
+            .btn-ghost:hover {
+                border-color: #f6cb5c;
+                background: rgba(246, 203, 92, 0.06);
+                color: #fff;
+            }
+
+        .btn-green {
+            background: #5cf68c;
+            color: #0b0b10;
+            box-shadow: 0 8px 28px rgba(92, 246, 140, 0.25);
         }
 
-        /* ----- sections (Harpia-like) ----- */
+            .btn-green:hover {
+                background: #6eff9a;
+                transform: scale(1.02);
+                box-shadow: 0 12px 36px rgba(92, 246, 140, 0.4);
+            }
+
+        /* ----- sections ----- */
         .section {
             margin: 3.5rem 0 4rem;
         }
@@ -258,29 +347,37 @@
             padding-bottom: 0.8rem;
         }
 
-        .section-head h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #f0f0ff, #c4b0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+            .section-head h2 {
+                font-size: 1.8rem;
+                font-weight: 700;
+                background: linear-gradient(135deg, #f0f0ff, #c4b0ff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
 
-        .section-head p {
-            color: #9a9ab8;
-        }
+                .section-head h2 .yellow {
+                    background: linear-gradient(135deg, #f6cb5c, #ffd96e);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
 
-        .section-head a {
-            color: #8B5CF6;
-            font-weight: 700;
-            transition: 0.2s;
-            white-space: nowrap;
-        }
+            .section-head p {
+                color: #9a9ab8;
+            }
 
-        .section-head a:hover {
-            color: #b69eff;
-        }
+            .section-head a {
+                color: #f6cb5c;
+                font-weight: 700;
+                transition: 0.2s;
+                white-space: nowrap;
+            }
+
+                .section-head a:hover {
+                    color: #ffd96e;
+                    transform: translateX(4px);
+                }
 
         /* ----- grid cards ----- */
         .grid {
@@ -300,43 +397,43 @@
             text-align: center;
         }
 
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(139, 92, 246, 0.2);
-            box-shadow: 0 20px 36px -16px rgba(0, 0, 0, 0.8);
-        }
+            .card:hover {
+                transform: translateY(-6px);
+                border-color: rgba(246, 203, 92, 0.3);
+                box-shadow: 0 20px 36px -16px rgba(246, 203, 92, 0.1);
+            }
 
-        .card .thumb {
-            aspect-ratio: 1 / 1;
-            background: #10101a;
-            border-radius: 18px;
-            overflow: hidden;
-            margin-bottom: 0.6rem;
-        }
+            .card .thumb {
+                aspect-ratio: 1 / 1;
+                background: #10101a;
+                border-radius: 18px;
+                overflow: hidden;
+                margin-bottom: 0.6rem;
+            }
 
-        .card .thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+                .card .thumb img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                }
 
-        .card h3 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #e0e0f0;
-            line-height: 1.3;
-        }
+            .card h3 {
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: #e0e0f0;
+                line-height: 1.3;
+            }
 
-        .card h3 a {
-            color: inherit;
-        }
+                .card h3 a {
+                    color: inherit;
+                }
 
-        .card h3 a:hover {
-            color: #b8a6ff;
-        }
+                    .card h3 a:hover {
+                        color: #f6cb5c;
+                    }
 
-        /* ----- карусели (арты + персонажи) ----- */
+        /* ----- карусели ----- */
         .carousel-wrapper {
             margin: 2.8rem 0 2rem;
         }
@@ -351,10 +448,10 @@
             color: #dedef2;
         }
 
-        .carousel-title i {
-            color: #8B5CF6;
-            font-size: 1.6rem;
-        }
+            .carousel-title i {
+                color: #f6cb5c;
+                font-size: 1.6rem;
+            }
 
         .carousel-container {
             position: relative;
@@ -381,23 +478,133 @@
             color: #7a7a9a;
         }
 
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+            .carousel-slide img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+        /* ----- Специальные стили для карусели персонажей со статичным фоном ----- */
+        .char-carousel-container {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid #26263a;
+            background-image: url('https://via.placeholder.com/1200x675/1a1a2e/2a2a4e?text=Dark+Fantasy+Background');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        .carousel-slide.char-slide {
-            background: #0b0b14;
-        }
+            /* Градиент поверх фона для атмосферы */
+            .char-carousel-container::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(ellipse at center, transparent 30%, rgba(11, 11, 20, 0.7) 100%);
+                pointer-events: none;
+                z-index: 1;
+            }
 
-        .carousel-slide.char-slide img {
-            object-fit: contain;
-            padding: 1rem;
-            background: transparent;
-        }
+            .char-carousel-container .carousel-track {
+                display: flex;
+                transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+                will-change: transform;
+                position: relative;
+                z-index: 2;
+            }
 
+            .char-carousel-container .carousel-slide {
+                min-width: 100%;
+                aspect-ratio: 16 / 9;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                position: relative;
+            }
+
+                .char-carousel-container .carousel-slide img {
+                    width: auto;
+                    height: 80%;
+                    max-height: 80%;
+                    object-fit: contain;
+                    display: block;
+                    filter: drop-shadow(0 8px 40px rgba(0, 0, 0, 0.8));
+                    padding: 1rem;
+                    position: relative;
+                    z-index: 2;
+                    transition: opacity 0.5s ease;
+                }
+
+            /* Стили для кнопок в карусели персонажей */
+            .char-carousel-container .carousel-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                color: #fff;
+                width: 44px;
+                height: 44px;
+                border-radius: 60px;
+                cursor: pointer;
+                font-size: 1.2rem;
+                transition: 0.2s;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+                .char-carousel-container .carousel-btn:hover {
+                    background: #f6cb5c;
+                    border-color: #f6cb5c;
+                    color: #0b0b10;
+                    box-shadow: 0 0 24px rgba(246, 203, 92, 0.4);
+                }
+
+                .char-carousel-container .carousel-btn.prev {
+                    left: 16px;
+                }
+
+                .char-carousel-container .carousel-btn.next {
+                    right: 16px;
+                }
+
+            .char-carousel-container .carousel-dots {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                padding: 1rem 0 0.4rem;
+                position: relative;
+                z-index: 5;
+            }
+
+                .char-carousel-container .carousel-dots span {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 20px;
+                    background: rgba(255, 255, 255, 0.2);
+                    transition: 0.25s;
+                    cursor: pointer;
+                }
+
+                    .char-carousel-container .carousel-dots span.active {
+                        background: #f6cb5c;
+                        width: 28px;
+                    }
+
+                    .char-carousel-container .carousel-dots span:hover {
+                        background: #8B5CF6;
+                    }
+
+        /* ----- обычные карусельные кнопки для артов ----- */
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -418,18 +625,20 @@
             justify-content: center;
         }
 
-        .carousel-btn:hover {
-            background: #8B5CF6;
-            border-color: #8B5CF6;
-            box-shadow: 0 0 24px rgba(139, 92, 246, 0.4);
-        }
+            .carousel-btn:hover {
+                background: #f6cb5c;
+                border-color: #f6cb5c;
+                color: #0b0b10;
+                box-shadow: 0 0 24px rgba(246, 203, 92, 0.4);
+            }
 
-        .carousel-btn.prev {
-            left: 16px;
-        }
-        .carousel-btn.next {
-            right: 16px;
-        }
+            .carousel-btn.prev {
+                left: 16px;
+            }
+
+            .carousel-btn.next {
+                right: 16px;
+            }
 
         .carousel-dots {
             display: flex;
@@ -438,21 +647,25 @@
             padding: 1rem 0 0.4rem;
         }
 
-        .carousel-dots span {
-            width: 10px;
-            height: 10px;
-            border-radius: 20px;
-            background: #3a3a52;
-            transition: 0.25s;
-            cursor: pointer;
-        }
+            .carousel-dots span {
+                width: 10px;
+                height: 10px;
+                border-radius: 20px;
+                background: #3a3a52;
+                transition: 0.25s;
+                cursor: pointer;
+            }
 
-        .carousel-dots span.active {
-            background: #8B5CF6;
-            width: 28px;
-        }
+                .carousel-dots span.active {
+                    background: #f6cb5c;
+                    width: 28px;
+                }
 
-        /* ----- footer (Harpia style) ----- */
+                .carousel-dots span:hover {
+                    background: #8B5CF6;
+                }
+
+        /* ----- footer ----- */
         .site-footer {
             margin-top: 4rem;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
@@ -465,39 +678,47 @@
             gap: 2rem 3rem;
         }
 
-        .footer-grid .brand {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
+            .footer-grid .brand {
+                font-size: 1.1rem;
+                margin-bottom: 0.3rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
 
-        .footer-grid .brand i {
-            font-size: 1.4rem;
-        }
+                .footer-grid .brand .logo-img {
+                    height: 40px;
+                    width: auto;
+                    display: block;
+                    filter: drop-shadow(0 2px 8px rgba(92, 246, 181, 0.2));
+                }
 
-        .footer-grid h4 {
-            color: #d0d0ec;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-        }
+            .footer-grid h4 {
+                color: #f6cb5c;
+                font-weight: 700;
+                margin-bottom: 0.8rem;
+                font-size: 1rem;
+            }
 
-        .footer-grid ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
+            .footer-grid ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+            }
 
-        .footer-grid ul a {
-            color: #9a9ab8;
-            transition: 0.2s;
-            font-size: 0.9rem;
-            font-weight: 400;
-        }
+                .footer-grid ul a {
+                    color: #9a9ab8;
+                    transition: 0.2s;
+                    font-size: 0.9rem;
+                    font-weight: 400;
+                }
 
-        .footer-grid ul a:hover {
-            color: #fff;
-        }
+                    .footer-grid ul a:hover {
+                        color: #f6cb5c;
+                        transform: translateX(4px);
+                        display: inline-block;
+                    }
 
         .footer-bottom {
             margin-top: 2.5rem;
@@ -507,6 +728,10 @@
             font-size: 0.85rem;
             color: #6a6a88;
         }
+
+            .footer-bottom .highlight {
+                color: #f6cb5c;
+            }
 
         .muted {
             color: #7a7a9a;
@@ -537,19 +762,26 @@
             border: 0;
         }
 
-        /* страница компании (скрыта по умолчанию) */
+        /* страницы */
         .page {
             display: none;
             animation: fadeUp 0.4s ease;
         }
 
-        .page.active {
-            display: block;
-        }
+            .page.active {
+                display: block;
+            }
 
         @keyframes fadeUp {
-            0% { opacity: 0.3; transform: translateY(12px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0.3;
+                transform: translateY(12px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .back-link {
@@ -563,25 +795,357 @@
             font-weight: 700;
         }
 
-        .back-link:hover {
-            border-color: #8B5CF6;
-            color: #fff;
-            background: rgba(139, 92, 246, 0.06);
-        }
+            .back-link:hover {
+                border-color: #f6cb5c;
+                color: #f6cb5c;
+                background: rgba(246, 203, 92, 0.06);
+            }
 
         /* data-i18n elements */
         [data-i18n] {
             transition: opacity 0.15s;
         }
+
+        /* --- RED THEME FOR COMPANY PAGE --- */
+        #page-company .section-head h2 {
+            background: linear-gradient(135deg, #fff, #ff8a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #page-company .section-head a {
+            color: #FA0130;
+        }
+
+            #page-company .section-head a:hover {
+                color: #ff5a7a;
+            }
+
+        #page-company .back-link {
+            border-color: #FA0130;
+            color: #FA0130;
+        }
+
+            #page-company .back-link:hover {
+                background: rgba(250, 1, 48, 0.1);
+                border-color: #ff3a5a;
+                color: #fff;
+            }
+
+        .company-card {
+            background: rgba(20, 4, 4, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 1.6rem;
+            border-radius: 24px;
+            border-left: 4px solid #FA0130;
+            transition: 0.25s;
+        }
+
+            .company-card:hover {
+                background: rgba(30, 6, 6, 0.8);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(250, 1, 48, 0.15);
+            }
+
+            .company-card h3 {
+                color: #ff8a8a;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .company-card h3 i {
+                    color: #FA0130;
+                }
+
+            .company-card p {
+                color: #e0c0c0;
+            }
+
+        .company-hero-icon {
+            background: #1a0808;
+            border-radius: 32px;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FA0130;
+            box-shadow: 0 0 40px rgba(250, 1, 48, 0.2);
+            overflow: hidden; /* Важно! Обрезает всё, что выходит за рамки */
+        }
+
+            .company-hero-icon img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Картинка заполняет всю область, обрезаясь при необходимости */
+                display: block;
+            }
+
+        .company-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #ff8a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .company-desc {
+            color: #d0b0b0;
+            max-width: 500px;
+        }
+
+        /* Адаптивность для страницы геймплея */
+        @media (max-width: 768px) {
+            #page-gameplay .grid-2col {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+                #page-gameplay .grid-2col .order-mobile-1 {
+                    order: 1;
+                }
+
+                #page-gameplay .grid-2col .order-mobile-2 {
+                    order: 2;
+                }
+        }
+
+        /* --- МНОГО ЖЁЛТЫХ И ЗЕЛЁНЫХ АКЦЕНТОВ --- */
+
+        /* Жёлтые акценты */
+        .accent-yellow {
+            color: #f6cb5c;
+        }
+
+        .accent-yellow-bg {
+            background: rgba(246, 203, 92, 0.08);
+        }
+
+        .border-yellow {
+            border-color: #f6cb5c !important;
+        }
+
+        .glow-yellow {
+            box-shadow: 0 0 30px rgba(246, 203, 92, 0.1);
+        }
+
+        .btn-yellow {
+            background: #f6cb5c;
+            color: #0b0b10;
+        }
+
+            .btn-yellow:hover {
+                background: #ffd96e;
+                transform: scale(1.02);
+            }
+
+        /* Зелёные акценты (умеренно) */
+        .accent-green {
+            color: #5cf68c;
+        }
+
+        .accent-green-bg {
+            background: rgba(92, 246, 140, 0.08);
+        }
+
+        .border-green {
+            border-color: #5cf68c !important;
+        }
+
+        /* Карточки с жёлтыми акцентами */
+        .feature-card {
+            background: rgba(20, 20, 34, 0.5);
+            border-radius: 20px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid #2a2a44;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .feature-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #8B5CF6, #f6cb5c);
+                opacity: 0;
+                transition: 0.3s;
+            }
+
+            .feature-card:hover::before {
+                opacity: 1;
+            }
+
+            .feature-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(246, 203, 92, 0.3);
+                box-shadow: 0 12px 40px rgba(246, 203, 92, 0.05);
+            }
+
+            .feature-card i {
+                font-size: 2rem;
+                color: #8B5CF6;
+                transition: 0.3s;
+            }
+
+            .feature-card:hover i {
+                color: #f6cb5c;
+                transform: scale(1.1);
+            }
+
+            .feature-card .feature-icon-yellow i {
+                color: #f6cb5c;
+            }
+
+            .feature-card .feature-icon-green i {
+                color: #5cf68c;
+            }
+
+            .feature-card span {
+                display: block;
+                font-weight: 700;
+                color: #e8e8f0;
+                margin-top: 0.3rem;
+            }
+
+            .feature-card small {
+                color: #8888aa;
+                font-size: 0.8rem;
+            }
+
+        /* Жёлтый акцент в блоке About */
+        .about-highlight {
+            background: rgba(12, 12, 22, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            border-left: 6px solid #f6cb5c;
+            margin-bottom: 1.8rem;
+            transition: 0.3s;
+        }
+
+            .about-highlight:hover {
+                border-left-color: #ffd96e;
+                box-shadow: 0 0 40px rgba(246, 203, 92, 0.05);
+            }
+
+            .about-highlight strong {
+                color: #f6cb5c;
+            }
+
+            .about-highlight .green-text {
+                color: #5cf68c;
+            }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+            .about-grid .img-card {
+                background: #10101c;
+                border-radius: 24px;
+                overflow: hidden;
+                border: 1px solid #2a2a44;
+                transition: 0.3s;
+            }
+
+                .about-grid .img-card:hover {
+                    border-color: #f6cb5c;
+                    box-shadow: 0 0 30px rgba(246, 203, 92, 0.05);
+                }
+
+                .about-grid .img-card img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .about-grid .img-card.icon-card {
+                    aspect-ratio: 1/1;
+                }
+
+                    .about-grid .img-card.icon-card img {
+                        object-fit: contain;
+                        padding: 0.8rem;
+                    }
+
+                .about-grid .img-card.cover-card {
+                    aspect-ratio: 16/9;
+                }
+
+        /* Жёлтые кнопки в действиях */
+        .actions .btn-watch {
+            background: #f6cb5c;
+            color: #0b0b10;
+            box-shadow: 0 8px 28px rgba(246, 203, 92, 0.25);
+        }
+
+            .actions .btn-watch:hover {
+                background: #ffd96e;
+                transform: scale(1.02);
+                box-shadow: 0 12px 36px rgba(246, 203, 92, 0.4);
+            }
+
+        /* Жёлтые точки в карусели */
+        .carousel-dots span.active {
+            background: #f6cb5c;
+        }
+
+        @media (max-width: 700px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+                .about-grid .img-card.icon-card {
+                    aspect-ratio: 16/9;
+                }
+        }
+
+        /* Дополнительные жёлтые акценты */
+        .hero-logo i {
+            filter: drop-shadow(0 8px 32px rgba(246, 203, 92, 0.2));
+        }
+
+        .section-head .badge {
+            display: inline-block;
+            background: rgba(246, 203, 92, 0.12);
+            color: #f6cb5c;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+
+        /* Жёлтые ссылки в футере */
+        .footer-grid ul a i {
+            color: #f6cb5c;
+            width: 1.2rem;
+            transition: 0.2s;
+        }
+
+        .footer-grid ul a:hover i {
+            color: #ffd96e;
+        }
     </style>
 </head>
 <body>
 
-    <!-- ========== HEADER (Harpia-like) ========== -->
+    <!-- ========== HEADER ========== -->
     <header class="site-header">
         <nav class="nav container">
             <a class="brand" href="#" aria-label="Sword of Salvation — home">
-                <i class="fas fa-dragon"></i> <span data-i18n="brand">Sword of Salvation</span>
+                <img src="Logo.png" alt="Sword of Salvation Logo" class="logo-img" />
             </a>
 
             <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
@@ -597,11 +1161,6 @@
                         <option value="ru">Русский</option>
                     </select>
                 </li>
-                <li>
-                    <button class="theme-toggle" type="button" role="switch" aria-label="Toggle theme" aria-checked="true">
-                        <span class="tt-thumb" aria-hidden="true"></span>
-                    </button>
-                </li>
             </ul>
         </nav>
     </header>
@@ -613,14 +1172,13 @@
 
             <!-- HERO -->
             <section class="hero">
-                <div class="hero-logo">
-                    <i class="fas fa-dragon" style="font-size: 5rem; color: #8B5CF6; filter: drop-shadow(0 8px 32px rgba(139,92,246,0.4));"></i>
-                </div>
+                <img src="icon.png" alt="Sword of Salvation" class="hero-logo" />
                 <h1 class="visually-hidden">Sword of Salvation — epic action-RPG</h1>
-                <p class="lead" data-i18n="hero_lead">Immerse yourself in epic battles against hordes of monsters in a dark fantasy world.</p>
+                <p class="lead" data-i18n="hero_lead">Immerse yourself in <strong>epic battles</strong> against hordes of monsters in a <strong>dark fantasy</strong> world.</p>
                 <div class="actions">
-                    <a href="#" class="btn btn-primary"><i class="fas fa-play"></i> <span data-i18n="hero_trailer">Watch Trailer</span></a>
-                    <a href="#" class="btn btn-ghost" data-i18n="hero_more">Learn More</a>
+                    <a href="#" class="btn btn-watch"><i class="fas fa-play"></i> <span data-i18n="hero_trailer">Watch Trailer</span></a>
+                    <!--<a href="#" class="btn btn-ghost" data-i18n="hero_more">Learn More</a>-->
+                    <a href="#" class="btn btn-green"><i class="fas fa-download"></i> Demo</a>
                 </div>
             </section>
 
@@ -628,56 +1186,66 @@
             <section class="section">
                 <div class="section-head">
                     <div>
-                        <h2 data-i18n="about_title">About the Game</h2>
+                        <h2 data-i18n="about_title">About <span class="yellow">the Game</span></h2>
                         <p data-i18n="about_sub">The first mobile top-down Action-RPG with soul.</p>
                     </div>
-                    <a href="#" data-i18n="about_more">More →</a>
+                    <a href="#" class="btn btn-ghost" data-page="gameplay" data-i18n="hero_more">Learn More</a>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-                    <div style="background: #10101c; border-radius: 24px; overflow: hidden; aspect-ratio: 16/9; border: 1px solid #2a2a44;">
-                        <img src="https://via.placeholder.com/800x450/1a1a2e/8B5CF6?text=Cover+Art" alt="Cover" style="width:100%; height:100%; object-fit:cover;">
+                <div class="about-grid">
+                    <div class="img-card cover-card">
+                        <img src="https://via.placeholder.com/800x450/1a1a2e/8B5CF6?text=Cover+Art" alt="Cover">
                     </div>
-                    <div style="background: #10101c; border-radius: 24px; overflow: hidden; aspect-ratio: 1/1; border: 1px solid #2a2a44;">
-                        <img src="https://via.placeholder.com/300/1a1a2e/8B5CF6?text=Icon" alt="Icon" style="width:100%; height:100%; object-fit:contain; padding:0.8rem;">
+                    <div class="img-card icon-card">
+                        <img src="https://via.placeholder.com/300/1a1a2e/8B5CF6?text=Icon" alt="Icon">
                     </div>
                 </div>
 
-                <div style="background: rgba(12,12,22,0.6); backdrop-filter:blur(4px); border-radius: 24px; padding: 1.8rem 2rem; border-left: 6px solid #8B5CF6; margin-bottom: 1.8rem;">
+                <div class="about-highlight">
                     <p data-i18n="about_p1"><strong>▸</strong> Uncover ancient secrets, fight hordes of demons and decide — destroy everyone or find another way.</p>
                     <p data-i18n="about_p2"><strong>▸</strong> Deep combat system, atmospheric pixel art and an open world.</p>
-                    <p data-i18n="about_p3"><strong>▸</strong> Created by a small team of enthusiasts who put their soul into every pixel.</p>
+                    <p data-i18n="about_p3"><strong>▸</strong> Created by a small team of enthusiasts who put their <span class="green-text">soul</span> into every pixel.</p>
                 </div>
 
-                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(160px,1fr));">
-                    <div style="background:rgba(20,20,34,0.5); border-radius:20px; padding:1.2rem; text-align:center; border:1px solid #2a2a44;">
-                        <i class="fas fa-skull" style="font-size:2rem; color:#8B5CF6;"></i>
-                        <span style="display:block; font-weight:700;" data-i18n="feature_dark">Dark Fantasy</span>
-                        <small style="color:#8888aa;" data-i18n="feature_dark_sub">Danger around every corner</small>
+                <!--<div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(160px,1fr));">
+                    <div class="feature-card">
+                        <i class="fas fa-skull"></i>
+                        <span data-i18n="feature_dark">Dark Fantasy</span>
+                        <small data-i18n="feature_dark_sub">Danger around every corner</small>
                     </div>
-                    <div style="background:rgba(20,20,34,0.5); border-radius:20px; padding:1.2rem; text-align:center; border:1px solid #2a2a44;">
-                        <i class="fas fa-robot" style="font-size:2rem; color:#8B5CF6;"></i>
-                        <span style="display:block; font-weight:700;" data-i18n="feature_enemies">Smart Enemies</span>
-                        <small style="color:#8888aa;" data-i18n="feature_enemies_sub">Different approach to each</small>
+                    <div class="feature-card">
+                        <i class="fas fa-robot feature-icon-yellow"></i>
+                        <span data-i18n="feature_enemies">Smart Enemies</span>
+                        <small data-i18n="feature_enemies_sub">Different approach to each</small>
                     </div>
-                    <div style="background:rgba(20,20,34,0.5); border-radius:20px; padding:1.2rem; text-align:center; border:1px solid #2a2a44;">
-                        <i class="fas fa-cubes" style="font-size:2rem; color:#8B5CF6;"></i>
-                        <span style="display:block; font-weight:700;" data-i18n="feature_progression">Flexible Progression</span>
-                        <small style="color:#8888aa;" data-i18n="feature_progression_sub">Weapons for every taste</small>
+                    <div class="feature-card">
+                        <i class="fas fa-cubes feature-icon-green"></i>
+                        <span data-i18n="feature_progression">Flexible Progression</span>
+                        <small data-i18n="feature_progression_sub">Weapons for every taste</small>
                     </div>
-                    <div style="background:rgba(20,20,34,0.5); border-radius:20px; padding:1.2rem; text-align:center; border:1px solid #2a2a44;">
-                        <i class="fas fa-music" style="font-size:2rem; color:#8B5CF6;"></i>
-                        <span style="display:block; font-weight:700;" data-i18n="feature_soundtrack">Soundtrack</span>
-                        <small style="color:#8888aa;" data-i18n="feature_soundtrack_sub">Electronic + orchestral</small>
+                    <div class="feature-card">
+                        <i class="fas fa-music"></i>
+                        <span data-i18n="feature_soundtrack">Soundtrack</span>
+                        <small data-i18n="feature_soundtrack_sub">Electronic + orchestral</small>
                     </div>
-                </div>
+                    <div class="feature-card">
+                        <i class="fas fa-trophy feature-icon-yellow"></i>
+                        <span>Challenging Bosses</span>
+                        <small>Epic encounters</small>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-palette feature-icon-green"></i>
+                        <span>Pixel Art</span>
+                        <small>Hand-crafted graphics</small>
+                    </div>
+                </div>-->
             </section>
 
             <!-- СЛАЙДШОУ АРТОВ -->
             <section class="section">
                 <div class="section-head">
                     <div>
-                        <h2 data-i18n="art_title">Artworks</h2>
+                        <h2 data-i18n="art_title">Artworks <span class="badge">NEW</span></h2>
                         <p data-i18n="art_sub">Visual style of the game.</p>
                     </div>
                 </div>
@@ -696,21 +1264,30 @@
                 </div>
             </section>
 
-            <!-- СЛАЙДШОУ ПЕРСОНАЖЕЙ (PNG) -->
+            <!-- СЛАЙДШОУ ПЕРСОНАЖЕЙ СО СТАТИЧНЫМ ФОНОМ -->
             <section class="section">
                 <div class="section-head">
                     <div>
-                        <h2 data-i18n="char_title">Characters</h2>
-                        <p data-i18n="char_sub">Heroes and enemies.</p>
+                        <h2 data-i18n="char_title">Characters <span class="badge">★</span></h2>
+                        <p data-i18n="char_sub">Heroes and enemies in a dark fantasy world.</p>
                     </div>
                 </div>
 
                 <div class="carousel-wrapper">
-                    <div class="carousel-container" id="charCarousel">
+                    <div class="char-carousel-container" id="charCarousel">
                         <div class="carousel-track" id="charTrack">
-                            <div class="carousel-slide char-slide"><img src="https://via.placeholder.com/1200x675/0b0b14/8B5CF6?text=PNG+Char+1" alt="Character 1" /></div>
-                            <div class="carousel-slide char-slide"><img src="https://via.placeholder.com/1200x675/0b0b14/8B5CF6?text=PNG+Char+2" alt="Character 2" /></div>
-                            <div class="carousel-slide char-slide"><img src="https://via.placeholder.com/1200x675/0b0b14/8B5CF6?text=PNG+Char+3" alt="Character 3" /></div>
+                            <div class="carousel-slide">
+                                <img src="https://via.placeholder.com/400x600/transparent/8B5CF6?text=PNG+Char+1" alt="Character 1" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://via.placeholder.com/400x600/transparent/f6cb5c?text=PNG+Char+2" alt="Character 2" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://via.placeholder.com/400x600/transparent/5cf68c?text=PNG+Char+3" alt="Character 3" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://via.placeholder.com/400x600/transparent/FA0130?text=PNG+Char+4" alt="Character 4" />
+                            </div>
                         </div>
                         <button class="carousel-btn prev" data-carousel="char"><i class="fas fa-chevron-left"></i></button>
                         <button class="carousel-btn next" data-carousel="char"><i class="fas fa-chevron-right"></i></button>
@@ -721,36 +1298,36 @@
 
         </div>
 
-        <!-- ========== СТРАНИЦА: КОМПАНИЯ ========== -->
+        <!-- ========== СТРАНИЦА: КОМПАНИЯ (RED THEME) ========== -->
         <div id="page-company" class="page">
             <section class="section">
                 <div style="display:flex; gap:2rem; flex-wrap:wrap; align-items:center; margin-bottom:2rem;">
-                    <div style="background:#10101c; border-radius:32px; width:140px; height:140px; display:flex; align-items:center; justify-content:center; border:2px solid #8B5CF6;">
-                        <i class="fas fa-dragon" style="font-size:4rem; color:#8B5CF6;"></i>
+                    <div class="company-hero-icon">
+                        <img src="CompanyIcon.jpg" alt="Company Logo" />
                     </div>
                     <div>
-                        <h2 style="font-size:2.4rem; font-weight:700; background:linear-gradient(135deg,#f0f0ff,#b8a6ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;" data-i18n="company_name">Trivi</h2>
-                        <p style="color:#b0b0cc; max-width:500px;" data-i18n="company_desc">A small team of enthusiasts creating games with soul. Our goal is to give players unique emotions.</p>
+                        <h2 class="company-title" data-i18n="company_name">Trivi</h2>
+                        <p class="company-desc" data-i18n="company_desc">A small team of enthusiasts creating games with soul. Our goal is to give players unique emotions.</p>
                     </div>
                 </div>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
-                    <div style="background:rgba(16,16,30,0.6); backdrop-filter:blur(4px); padding:1.6rem; border-radius:24px; border-left:4px solid #8B5CF6;">
-                        <h3 style="color:#c8baff; display:flex; align-items:center; gap:10px;"><i class="fas fa-users" style="color:#8B5CF6;"></i> <span data-i18n="company_who">Who we are</span></h3>
-                        <p style="color:#c0c0da;" data-i18n="company_who_text">We are a team of developers, designers and musicians united by a love for the action-RPG genre. Together since 2023.</p>
+                    <div class="company-card">
+                        <h3><i class="fas fa-users"></i> <span data-i18n="company_who">Who we are</span></h3>
+                        <p data-i18n="company_who_text">We are a team of developers, designers and musicians united by a love for the action-RPG genre. Together since 2023.</p>
                     </div>
-                    <div style="background:rgba(16,16,30,0.6); backdrop-filter:blur(4px); padding:1.6rem; border-radius:24px; border-left:4px solid #8B5CF6;">
-                        <h3 style="color:#c8baff; display:flex; align-items:center; gap:10px;"><i class="fas fa-calendar-alt" style="color:#8B5CF6;"></i> <span data-i18n="company_history">History</span></h3>
-                        <p style="color:#c0c0da;" data-i18n="company_history_text">We started with a small prototype in 2022, and in 2023 we assembled a team. Now we are actively working on the final version.</p>
+                    <div class="company-card">
+                        <h3><i class="fas fa-calendar-alt"></i> <span data-i18n="company_history">History</span></h3>
+                        <p data-i18n="company_history_text">We started with a small prototype in 2022, and in 2023 we assembled a team. Now we are actively working on the final version.</p>
                     </div>
-                    <div style="background:rgba(16,16,30,0.6); backdrop-filter:blur(4px); padding:1.6rem; border-radius:24px; border-left:4px solid #8B5CF6;">
-                        <h3 style="color:#c8baff; display:flex; align-items:center; gap:10px;"><i class="fas fa-globe" style="color:#8B5CF6;"></i> <span data-i18n="company_mission">Mission</span></h3>
-                        <p style="color:#c0c0da;" data-i18n="company_mission_text">Create memorable mobile and computer games that bring fresh air to the Russian game development scene.</p>
+                    <div class="company-card">
+                        <h3><i class="fas fa-globe"></i> <span data-i18n="company_mission">Mission</span></h3>
+                        <p data-i18n="company_mission_text">Create memorable mobile and computer games that bring fresh air to the Russian game development scene.</p>
                     </div>
-                    <div style="background:rgba(16,16,30,0.6); backdrop-filter:blur(4px); padding:1.6rem; border-radius:24px; border-left:4px solid #8B5CF6;">
-                        <h3 style="color:#c8baff; display:flex; align-items:center; gap:10px;"><i class="fas fa-handshake" style="color:#8B5CF6;"></i> <span data-i18n="company_contacts">Contacts</span></h3>
-                        <p style="color:#c0c0da;"><i class="fas fa-envelope" style="color:#8B5CF6; width:1.4rem;"></i> trivigamesss@gmail.com</p>
-                        <p style="margin-top:6px;"><i class="fab fa-vk" style="color:#8B5CF6; width:1.4rem;"></i> vk.com/trivi_games</p>
+                    <div class="company-card">
+                        <h3><i class="fas fa-handshake"></i> <span data-i18n="company_contacts">Contacts</span></h3>
+                        <p><i class="fas fa-envelope" style="color:#FA0130; width:1.4rem;"></i> trivigamesss@gmail.com</p>
+                        <p style="margin-top:6px;"><i class="fab fa-vk" style="color:#FA0130; width:1.4rem;"></i> vk.com/trivi_games</p>
                     </div>
                 </div>
 
@@ -760,11 +1337,72 @@
 
     </main>
 
-    <!-- ========== FOOTER (Harpia-like) ========== -->
+    <!-- ========== СТРАНИЦА: ГЕЙМПЛЕЙ И МИР ========== -->
+    <div id="page-gameplay" class="page">
+        <section class="section">
+            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                <a href="#" class="back-link" id="backToGameFromGameplay"><i class="fas fa-arrow-left"></i> <span>Back to game</span></a>
+                <h2 style="font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #f0f0ff, #c4b0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    Gameplay & World
+                </h2>
+            </div>
+
+            <!-- Блок 1: Скриншот слева, текст справа -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; align-items: center;">
+                <div style="border-radius: 24px; overflow: hidden; border: 1px solid #2a2a44;">
+                    <img src="https://via.placeholder.com/800x450/1a1a2e/8B5CF6?text=Gameplay+Screenshot+1" alt="Gameplay 1" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                </div>
+                <div>
+                    <h3 style="color: #f6cb5c; font-size: 1.5rem; margin-bottom: 1rem;">Epic Combat System</h3>
+                    <p style="color: #c8c8e4; line-height: 1.8;">Experience deep tactical combat where every decision matters. Choose from multiple weapon types, combine abilities, and master the art of battle against hordes of demons.</p>
+                    <ul style="color: #9a9ab8; margin-top: 1rem; list-style: none; padding: 0;">
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-check" style="color: #5cf68c; margin-right: 0.5rem;"></i> Real-time combat with dodge and parry mechanics</li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-check" style="color: #5cf68c; margin-right: 0.5rem;"></i> 50+ unique weapons and spells</li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-check" style="color: #5cf68c; margin-right: 0.5rem;"></i> Challenging boss encounters</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Блок 2: Текст слева, скриншот справа -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; align-items: center;">
+                <div>
+                    <h3 style="color: #f6cb5c; font-size: 1.5rem; margin-bottom: 1rem;">Dark Fantasy World</h3>
+                    <p style="color: #c8c8e4; line-height: 1.8;">Immerse yourself in a rich, atmospheric world filled with ancient secrets, forgotten civilizations, and dark magic. Every location tells a story.</p>
+                    <ul style="color: #9a9ab8; margin-top: 1rem; list-style: none; padding: 0;">
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-map" style="color: #f6cb5c; margin-right: 0.5rem;"></i> 10 unique biomes to explore</li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-scroll" style="color: #f6cb5c; margin-right: 0.5rem;"></i> Deep lore with 100+ readable items</li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-skull" style="color: #f6cb5c; margin-right: 0.5rem;"></i> Dark atmosphere with dynamic lighting</li>
+                    </ul>
+                </div>
+                <div style="border-radius: 24px; overflow: hidden; border: 1px solid #2a2a44;">
+                    <img src="https://via.placeholder.com/800x450/1a1a2e/f6cb5c?text=World+Screenshot+2" alt="World 2" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                </div>
+            </div>
+
+            <!-- Блок 3: Скриншот слева, текст справа -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; align-items: center;">
+                <div style="border-radius: 24px; overflow: hidden; border: 1px solid #2a2a44;">
+                    <img src="https://via.placeholder.com/800x450/1a1a2e/5cf68c?text=Progression+Screenshot+3" alt="Progression 3" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                </div>
+                <div>
+                    <h3 style="color: #f6cb5c; font-size: 1.5rem; margin-bottom: 1rem;">Deep Progression System</h3>
+                    <p style="color: #c8c8e4; line-height: 1.8;">Customize your character with a flexible progression system. Unlock new abilities, upgrade your gear, and discover powerful artifacts.</p>
+                    <ul style="color: #9a9ab8; margin-top: 1rem; list-style: none; padding: 0;">
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-star" style="color: #f6cb5c; margin-right: 0.5rem;"></i> 3 skill trees with 20+ abilities each</li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-gem" style="color: #f6cb5c; margin-right: 0.5rem;"></i> Crafting and enchantment system</li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-trophy" style="color: #f6cb5c; margin-right: 0.5rem;"></i> New Game+ mode with increased difficulty</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- ========== FOOTER ========== -->
     <footer class="site-footer">
         <div class="container footer-grid">
             <div>
-                <div class="brand"><i class="fas fa-dragon"></i> <span data-i18n="brand">Sword of Salvation</span></div>
+                <div class="brand">
+                    <img src="Logo.png" alt="Sword of Salvation Logo" class="logo-img" />
+                </div>
                 <p class="muted" data-i18n="footer_sub">Epic action-RPG in a dark fantasy world.</p>
             </div>
             <div>
@@ -787,13 +1425,13 @@
             </div>
         </div>
         <div class="container footer-bottom">
-            <small>© 2026 Sword of Salvation. <span data-i18n="footer_rights">All rights reserved.</span></small>
+            <small>© 2026 Sword of Salvation. <span data-i18n="footer_rights">All rights reserved.</span> <span class="highlight">✦</span></small>
         </div>
     </footer>
 
     <!-- ========== SCRIPTS ========== -->
     <script>
-        (function() {
+        (function () {
             // ---------- ЛОКАЛИЗАЦИЯ ----------
             const translations = {
                 en: {
@@ -820,7 +1458,7 @@
                     art_title: 'Artworks',
                     art_sub: 'Visual style of the game.',
                     char_title: 'Characters',
-                    char_sub: 'Heroes and enemies.',
+                    char_sub: 'Heroes and allies.',
                     company_name: 'Trivi',
                     company_desc: 'A small team of enthusiasts creating games with soul. Our goal is to give players unique emotions.',
                     company_who: 'Who we are',
@@ -863,7 +1501,7 @@
                     art_title: 'Арты',
                     art_sub: 'Визуальный стиль игры.',
                     char_title: 'Персонажи',
-                    char_sub: 'Герои и противники.',
+                    char_sub: 'Герои и союзники.',
                     company_name: 'Trivi',
                     company_desc: 'Небольшая команда энтузиастов, создающая игры с душой. Наша цель — дарить игрокам уникальные эмоции.',
                     company_who: 'Кто мы',
@@ -903,7 +1541,7 @@
 
             const langSwitcher = document.getElementById('langSwitcher');
             if (langSwitcher) {
-                langSwitcher.addEventListener('change', function() {
+                langSwitcher.addEventListener('change', function () {
                     setLanguage(this.value);
                 });
             }
@@ -915,7 +1553,7 @@
             const toggle = document.querySelector('.nav-toggle');
             const navLinks = document.getElementById('navLinks');
             if (toggle && navLinks) {
-                toggle.addEventListener('click', function() {
+                toggle.addEventListener('click', function () {
                     navLinks.classList.toggle('open');
                     const expanded = navLinks.classList.contains('open');
                     this.setAttribute('aria-expanded', expanded);
@@ -926,12 +1564,15 @@
             const navItems = document.querySelectorAll('.nav-links a[data-page]');
             const pageGame = document.getElementById('page-game');
             const pageCompany = document.getElementById('page-company');
+            const pageGameplay = document.getElementById('page-gameplay');
 
             function switchPage(pageId) {
                 pageGame.classList.remove('active');
                 pageCompany.classList.remove('active');
+                pageGameplay.classList.remove('active');
                 if (pageId === 'game') pageGame.classList.add('active');
                 else if (pageId === 'company') pageCompany.classList.add('active');
+                else if (pageId === 'gameplay') pageGameplay.classList.add('active');
 
                 navItems.forEach(btn => {
                     btn.classList.remove('active');
@@ -940,13 +1581,31 @@
             }
 
             navItems.forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.preventDefault();
                     switchPage(this.dataset.page);
                 });
             });
 
-            document.getElementById('backToGame').addEventListener('click', function(e) {
+            // ---------- обработка кнопки "Learn More" на странице игры ----------
+            const learnMoreBtn = document.querySelector('.section-head a[data-page="gameplay"]');
+            if (learnMoreBtn) {
+                learnMoreBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    switchPage('gameplay');
+                });
+            }
+
+            // ---------- обработка кнопки "Back to game" на странице геймплея ----------
+            const backToGameFromGameplay = document.getElementById('backToGameFromGameplay');
+            if (backToGameFromGameplay) {
+                backToGameFromGameplay.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    switchPage('game');
+                });
+            }
+
+            document.getElementById('backToGame').addEventListener('click', function (e) {
                 e.preventDefault();
                 switchPage('game');
             });
@@ -970,7 +1629,7 @@
                         const dot = document.createElement('span');
                         dot.dataset.index = i;
                         if (i === 0) dot.classList.add('active');
-                        dot.addEventListener('click', function() {
+                        dot.addEventListener('click', function () {
                             goTo(parseInt(this.dataset.index));
                         });
                         dotsContainer.appendChild(dot);
@@ -1004,13 +1663,13 @@
 
                 const prevBtn = container.querySelector('.prev');
                 const nextBtn = container.querySelector('.next');
-                if (prevBtn) prevBtn.addEventListener('click', function(e) { e.stopPropagation(); prev(); });
-                if (nextBtn) nextBtn.addEventListener('click', function(e) { e.stopPropagation(); next(); });
+                if (prevBtn) prevBtn.addEventListener('click', function (e) { e.stopPropagation(); prev(); });
+                if (nextBtn) nextBtn.addEventListener('click', function (e) { e.stopPropagation(); next(); });
 
-                container.addEventListener('mouseenter', function() {
+                container.addEventListener('mouseenter', function () {
                     if (autoInterval) clearInterval(autoInterval);
                 });
-                container.addEventListener('mouseleave', function() {
+                container.addEventListener('mouseleave', function () {
                     resetAuto();
                 });
 
@@ -1022,7 +1681,7 @@
 
             // ---------- защита от пустых ссылок ----------
             document.querySelectorAll('a[href="#"]').forEach(a => {
-                a.addEventListener('click', function(e) {
+                a.addEventListener('click', function (e) {
                     if (this.id === 'backToGame') return;
                     e.preventDefault();
                 });
