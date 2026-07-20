@@ -183,7 +183,7 @@
             padding: 2.5rem 0 3rem;
             position: relative;
             overflow: hidden;
-            background-color: #0b0b10;
+/*            background-color: #0b0b10;*/
             min-height: 500px;
             display: flex;
             flex-direction: column;
@@ -205,7 +205,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-image: url('Desk.png');
+                background-image: url('DeskTrees.png');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -218,7 +218,7 @@
             }
 
             /* Затемнение поверх фона для лучшей читаемости текста */
-            .hero::after {
+/*            .hero::after {
                 content: '';
                 position: absolute;
                 top: 0;
@@ -227,7 +227,7 @@
                 bottom: 0;
                 background: radial-gradient(ellipse at center, transparent 40%, rgba(11, 11, 16, 0.7) 100%);
                 z-index: 1;
-            }
+            }*/
 
             /* Все контентные элементы Hero должны быть поверх фона */
             .hero > * {
@@ -1067,16 +1067,14 @@
         }
 
             .about-grid .img-card {
-                background: #10101c;
-                border-radius: 24px;
                 overflow: hidden;
-                border: 1px solid #2a2a44;
+                border: 2px solid #2a2a44;
                 transition: 0.3s;
             }
 
                 .about-grid .img-card:hover {
-                    border-color: #f6cb5c;
-                    box-shadow: 0 0 30px rgba(246, 203, 92, 0.05);
+                    border-color: #8B5CF6;
+                    box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
                 }
 
                 .about-grid .img-card img {
@@ -1090,11 +1088,14 @@
                 }
 
                     .about-grid .img-card.icon-card img {
+                        filter: drop-shadow(0 8px 32px rgba(139, 92, 246, 0.3));
                         object-fit: contain;
                         padding: 0.8rem;
                     }
 
                 .about-grid .img-card.cover-card {
+                    background: #10101c;
+                    border-radius: 24px;
                     aspect-ratio: 16/9;
                 }
 
@@ -1151,6 +1152,22 @@
 
         .footer-grid ul a:hover i {
             color: #ffd96e;
+        }
+
+        /* Убираем обводку и свечение только у Statue.png */
+        .no-border {
+            border: none !important;
+        }
+
+            .no-border:hover {
+                border-color: transparent !important;
+                border: none !important;
+                box-shadow: none !important; /* ← Убираем тень/свечение */
+            }
+
+        /* Также убираем свечение, если оно добавляется через box-shadow в других стилях */
+        .no-border {
+            box-shadow: none !important;
         }
     </style>
 </head>
@@ -1209,10 +1226,10 @@
 
                 <div class="about-grid">
                     <div class="img-card cover-card">
-                        <img src="https://via.placeholder.com/800x450/1a1a2e/8B5CF6?text=Cover+Art" alt="Cover">
+                        <img src="SoS_MainPoster.png" alt="Cover">
                     </div>
-                    <div class="img-card icon-card">
-                        <img src="https://via.placeholder.com/300/1a1a2e/8B5CF6?text=Icon" alt="Icon">
+                    <div class="img-card icon-card no-border">
+                        <img src="Statue.png" alt="Icon">
                     </div>
                 </div>
 
@@ -1704,9 +1721,6 @@
 
         })();
     </script>
-
-</body>
-</html>
 
 </body>
 </html>
