@@ -183,7 +183,7 @@
             padding: 2.5rem 0 3rem;
             position: relative;
             overflow: hidden;
-/*            background-color: #0b0b10;*/
+            /*            background-color: #0b0b10;*/
             min-height: 500px;
             display: flex;
             flex-direction: column;
@@ -218,7 +218,7 @@
             }
 
             /* Затемнение поверх фона для лучшей читаемости текста */
-/*            .hero::after {
+            /*            .hero::after {
                 content: '';
                 position: absolute;
                 top: 0;
@@ -513,11 +513,11 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-image: url('Desk.png');
+                background-image: url('Background.png');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
-                opacity: 0.5;
+                /*                opacity: 0.5;*/
                 z-index: 0;
                 /* Растягиваем фон на всю ширину */
                 width: 100vw;
@@ -533,20 +533,22 @@
                 z-index: 2;
             }
 
+            /* ----- ПЕРЕОПРЕДЕЛЕНИЕ РАЗМЕРОВ ДЛЯ КАРУСЕЛИ ПЕРСОНАЖЕЙ ----- */
             .char-carousel-container .carousel-slide {
                 min-width: 100%;
-                aspect-ratio: 16 / 9;
+                aspect-ratio: 16 / 4; /* ← Меняйте это значение */
+                background: transparent;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: transparent;
                 position: relative;
             }
 
+                /* Если нужно, чтобы изображения внутри тоже подстроились */
                 .char-carousel-container .carousel-slide img {
                     width: auto;
-                    height: 80%;
-                    max-height: 80%;
+                    height: 50%; /* ← Процент от высоты слайда */
+                    max-height: 50%;
                     object-fit: contain;
                     display: block;
                     filter: drop-shadow(0 8px 40px rgba(0, 0, 0, 0.8));
@@ -1285,9 +1287,9 @@
                 <div class="carousel-wrapper">
                     <div class="carousel-container" id="artCarousel">
                         <div class="carousel-track" id="artTrack">
-                            <div class="carousel-slide"><img src="https://via.placeholder.com/1200x675/1a1a2e/8B5CF6?text=Art+1" alt="Art 1" /></div>
-                            <div class="carousel-slide"><img src="https://via.placeholder.com/1200x675/1a1a2e/8B5CF6?text=Art+2" alt="Art 2" /></div>
-                            <div class="carousel-slide"><img src="https://via.placeholder.com/1200x675/1a1a2e/8B5CF6?text=Art+3" alt="Art 3" /></div>
+                            <div class="carousel-slide"><img src="SoS_MainPoster1.png" alt="Art 1" /></div>
+                            <div class="carousel-slide"><img src="DarkKnight.png" alt="Art 2" /></div>
+                            <div class="carousel-slide"><img src="TriangleDefeated.jpg" alt="Art 3" /></div>
                         </div>
                         <button class="carousel-btn prev" data-carousel="art"><i class="fas fa-chevron-left"></i></button>
                         <button class="carousel-btn next" data-carousel="art"><i class="fas fa-chevron-right"></i></button>
@@ -1312,13 +1314,13 @@
                                 <img src="Player.png" alt="Character 1" />
                             </div>
                             <div class="carousel-slide">
-                                <img src="https://via.placeholder.com/400x600/transparent/f6cb5c?text=PNG+Char+2" alt="Character 2" />
+                                <img src="Trader.png" alt="Character 2" />
                             </div>
                             <div class="carousel-slide">
-                                <img src="https://via.placeholder.com/400x600/transparent/5cf68c?text=PNG+Char+3" alt="Character 3" />
+                                <img src="OldKnight.png" alt="Character 3" />
                             </div>
                             <div class="carousel-slide">
-                                <img src="https://via.placeholder.com/400x600/transparent/FA0130?text=PNG+Char+4" alt="Character 4" />
+                                <img src="Elizabeth.png" alt="Character 4" />
                             </div>
                         </div>
                         <button class="carousel-btn prev" data-carousel="char"><i class="fas fa-chevron-left"></i></button>
@@ -1373,8 +1375,8 @@
     <div id="page-gameplay" class="page">
         <section class="section">
             <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap;">
-                <a href="#" class="back-link" id="backToGameFromGameplay"><i class="fas fa-arrow-left"></i> <span>Back to game</span></a>
-                <h2 style="font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #f0f0ff, #c4b0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                <a href="#" class="back-link" id="backToGameFromGameplay"><i class="fas fa-arrow-left"></i> <span data-i18n="back_to_game">Back to game</span></a>
+                <h2 style="font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #f0f0ff, #c4b0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;" data-i18n="gameplay_title">
                     Gameplay & World
                 </h2>
             </div>
@@ -1382,15 +1384,15 @@
             <!-- Блок 1: Скриншот слева, текст справа -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; align-items: center;">
                 <div style="border-radius: 24px; overflow: hidden; border: 1px solid #2a2a44;">
-                    <img src="https://via.placeholder.com/800x450/1a1a2e/8B5CF6?text=Gameplay+Screenshot+1" alt="Gameplay 1" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                    <img src="Screenshot3.jpg" alt="Gameplay 1" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                 </div>
                 <div>
-                    <h3 style="color: #f6cb5c; font-size: 1.5rem; margin-bottom: 1rem;">Epic Combat System</h3>
-                    <p style="color: #c8c8e4; line-height: 1.8;">Experience deep tactical combat where every decision matters. Choose from multiple weapon types, combine abilities, and master the art of battle against hordes of demons.</p>
+                    <h3 style="color: #f6cb5c; font-size: 1.5rem; margin-bottom: 1rem;" data-i18n="gameplay_block1_title">Simple but Engaging Combat System</h3>
+                    <p style="color: #c8c8e4; line-height: 1.8;" data-i18n="gameplay_block1_text">Engage in deadly battles where every missed strike matters. Choose your playstyle, combine abilities, and master the art of fighting demon hordes.</p>
                     <ul style="color: #9a9ab8; margin-top: 1rem; list-style: none; padding: 0;">
-                        <li style="padding: 0.3rem 0;"><i class="fas fa-check" style="color: #5cf68c; margin-right: 0.5rem;"></i> Real-time combat with dodge and parry mechanics</li>
-                        <li style="padding: 0.3rem 0;"><i class="fas fa-check" style="color: #5cf68c; margin-right: 0.5rem;"></i> 50+ unique weapons and spells</li>
-                        <li style="padding: 0.3rem 0;"><i class="fas fa-check" style="color: #5cf68c; margin-right: 0.5rem;"></i> Challenging boss encounters</li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-check" style="color: #5cf68c; margin-right: 0.5rem;"></i> <span data-i18n="gameplay_block1_li1">Real-time combat with weapon combos, dodging and parrying</span></li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-check" style="color: #5cf68c; margin-right: 0.5rem;"></i> <span data-i18n="gameplay_block1_li2">Various weapon combinations, summonable creatures and magic runes</span></li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-check" style="color: #5cf68c; margin-right: 0.5rem;"></i> <span data-i18n="gameplay_block1_li3">Epic battles with a variety of bosses</span></li>
                     </ul>
                 </div>
             </div>
@@ -1398,31 +1400,39 @@
             <!-- Блок 2: Текст слева, скриншот справа -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; align-items: center;">
                 <div>
-                    <h3 style="color: #f6cb5c; font-size: 1.5rem; margin-bottom: 1rem;">Dark Fantasy World</h3>
-                    <p style="color: #c8c8e4; line-height: 1.8;">Immerse yourself in a rich, atmospheric world filled with ancient secrets, forgotten civilizations, and dark magic. Every location tells a story.</p>
+                    <h3 style="color: #f6cb5c; font-size: 1.5rem; margin-bottom: 1rem;" data-i18n="gameplay_block2_title">Dark Fantasy World</h3>
+                    <p style="color: #c8c8e4; line-height: 1.8;" data-i18n="gameplay_block2_text">Immerse yourself in a rich, atmospheric world filled with the secrets of the gods, forgotten civilizations and dark magic. Every location holds terrifying secrets.</p>
                     <ul style="color: #9a9ab8; margin-top: 1rem; list-style: none; padding: 0;">
-                        <li style="padding: 0.3rem 0;"><i class="fas fa-map" style="color: #f6cb5c; margin-right: 0.5rem;"></i> 10 unique biomes to explore</li>
-                        <li style="padding: 0.3rem 0;"><i class="fas fa-scroll" style="color: #f6cb5c; margin-right: 0.5rem;"></i> Deep lore with 100+ readable items</li>
-                        <li style="padding: 0.3rem 0;"><i class="fas fa-skull" style="color: #f6cb5c; margin-right: 0.5rem;"></i> Dark atmosphere with dynamic lighting</li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-map" style="color: #f6cb5c; margin-right: 0.5rem;"></i> <span data-i18n="gameplay_block2_li1">Many unique biomes</span></li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-dungeon" style="color: #f6cb5c; margin-right: 0.5rem;"></i> <span data-i18n="gameplay_block2_li2">Atmospheric dungeons</span></li>
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-skull" style="color: #f6cb5c; margin-right: 0.5rem;"></i> <span data-i18n="gameplay_block2_li3">Various types of monsters and demons</span></li>
                     </ul>
                 </div>
                 <div style="border-radius: 24px; overflow: hidden; border: 1px solid #2a2a44;">
-                    <img src="https://via.placeholder.com/800x450/1a1a2e/f6cb5c?text=World+Screenshot+2" alt="World 2" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                    <img src="Triangle.jpg" alt="World 2" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                 </div>
             </div>
 
             <!-- Блок 3: Скриншот слева, текст справа -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; align-items: center;">
                 <div style="border-radius: 24px; overflow: hidden; border: 1px solid #2a2a44;">
-                    <img src="https://via.placeholder.com/800x450/1a1a2e/5cf68c?text=Progression+Screenshot+3" alt="Progression 3" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                    <img src="Shop.jpg" alt="Progression 3" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                 </div>
                 <div>
-                    <h3 style="color: #f6cb5c; font-size: 1.5rem; margin-bottom: 1rem;">Deep Progression System</h3>
-                    <p style="color: #c8c8e4; line-height: 1.8;">Customize your character with a flexible progression system. Unlock new abilities, upgrade your gear, and discover powerful artifacts.</p>
+                    <h3 style="color: #f6cb5c; font-size: 1.5rem; margin-bottom: 1rem;" data-i18n="gameplay_block3_title">Simple Progression System</h3>
+                    <p style="color: #c8c8e4; line-height: 1.8;" data-i18n="gameplay_block3_text">Discover new weapons, find companions, and collect magic runes to customize your playstyle.</p>
                     <ul style="color: #9a9ab8; margin-top: 1rem; list-style: none; padding: 0;">
-                        <li style="padding: 0.3rem 0;"><i class="fas fa-star" style="color: #f6cb5c; margin-right: 0.5rem;"></i> 3 skill trees with 20+ abilities each</li>
-                        <li style="padding: 0.3rem 0;"><i class="fas fa-gem" style="color: #f6cb5c; margin-right: 0.5rem;"></i> Crafting and enchantment system</li>
-                        <li style="padding: 0.3rem 0;"><i class="fas fa-trophy" style="color: #f6cb5c; margin-right: 0.5rem;"></i> New Game+ mode with increased difficulty</li>
+                        <!-- Для "Несколько видов оружия" — иконка скрещенных мечей или арсенал -->
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-crosshairs" style="color: #f6cb5c; margin-right: 0.5rem;"></i> <span data-i18n="gameplay_block3_li1">Several weapon types — choose what you like</span></li>
+
+                        <!-- Для "Простая и понятная прокачка" — иконка звезды или график роста -->
+                        <li style="padding: 0.3rem 0;">
+                            <span style="color: #f6cb5c; margin-right: 0.5rem; font-size: 1.1rem;">✦</span>
+                            <span data-i18n="gameplay_block3_li2">Simple and clear leveling</span>
+                        </li>
+
+                        <!-- Для "Отдельный режим для быстрого гринда" — иконка молнии или шестеренки -->
+                        <li style="padding: 0.3rem 0;"><i class="fas fa-fire" style="color: #f6cb5c; margin-right: 0.5rem;"></i> <span data-i18n="gameplay_block3_li3">Separate mode for quick grinding and testing your skills</span></li>
                     </ul>
                 </div>
             </div>
@@ -1448,10 +1458,10 @@
             <div>
                 <h4 data-i18n="footer_contact">Contact</h4>
                 <ul>
-                    <li><a href="#"><i class="fab fa-vk"></i> VK</a></li>
-                    <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
-                    <li><a href="#"><i class="fas fa-crown"></i> Boosty</a></li>
+                    <li><a href="https://m.vk.ru/trivi_games"><i class="fab fa-vk"></i> VK</a></li>
+                    <li><a href="https://www.tiktok.com/@trivigames?_r=1&_t=ZS-98DYHQZASiQ"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    <li><a href="https://youtube.com/@trivi_games?si=3lHfWE_PD23FU_Pu"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    <li><a href="https://boosty.to/trivigames"><i class="fas fa-crown"></i> Boosty</a></li>
                     <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
                 </ul>
             </div>
@@ -1507,7 +1517,24 @@
                     footer_games: 'Games',
                     footer_news: 'News',
                     footer_contact: 'Contact',
-                    footer_rights: 'All rights reserved.'
+                    footer_rights: 'All rights reserved.',
+                    // Gameplay page translations
+                    gameplay_title: 'Gameplay & World',
+                    gameplay_block1_title: 'Simple but Engaging Combat System',
+                    gameplay_block1_text: 'Engage in deadly battles where every missed strike matters. Choose your playstyle, combine abilities, and master the art of fighting demon hordes.',
+                    gameplay_block1_li1: 'Real-time combat with weapon combos, dodging and parrying',
+                    gameplay_block1_li2: 'Various weapon combinations, summonable creatures and magic runes',
+                    gameplay_block1_li3: 'Epic battles with a variety of bosses',
+                    gameplay_block2_title: 'Dark Fantasy World',
+                    gameplay_block2_text: 'Immerse yourself in a rich, atmospheric world filled with the secrets of the gods, forgotten civilizations and dark magic. Every location holds terrifying secrets.',
+                    gameplay_block2_li1: 'Many unique biomes',
+                    gameplay_block2_li2: 'Atmospheric dungeons',
+                    gameplay_block2_li3: 'Various types of monsters and demons',
+                    gameplay_block3_title: 'Simple Progression System',
+                    gameplay_block3_text: 'Discover new weapons, find companions, and collect magic runes to customize your playstyle.',
+                    gameplay_block3_li1: 'Several weapon types — choose what you like',
+                    gameplay_block3_li2: 'Simple and clear leveling',
+                    gameplay_block3_li3: 'Separate mode for quick grinding and testing your skills'
                 },
                 ru: {
                     brand: 'Sword of Salvation',
@@ -1550,7 +1577,24 @@
                     footer_games: 'Игры',
                     footer_news: 'Новости',
                     footer_contact: 'Связаться',
-                    footer_rights: 'Все права защищены.'
+                    footer_rights: 'Все права защищены.',
+                    // Gameplay page translations (Russian)
+                    gameplay_title: 'Геймплей и мир',
+                    gameplay_block1_title: 'Простая, но захватывающая боевая система',
+                    gameplay_block1_text: 'Участвуйте в смертельных сражениях, где важен каждый пропущенный удар. Выбирайте стиль игры по своему вкусу, комбинируйте способности и овладевайте искусством сражения с ордами демонов.',
+                    gameplay_block1_li1: 'Сражения в реальном времени с использованием комбинаций оружия, уклонения и парирования',
+                    gameplay_block1_li2: 'Различные комбинации оружия, призываемых существ и магических рун',
+                    gameplay_block1_li3: 'Захватывающие сражения с самыми разными боссами',
+                    gameplay_block2_title: 'Мир мрачного фэнтези',
+                    gameplay_block2_text: 'Погрузитесь в богатый, атмосферный мир, наполненный тайнами богов, забытыми цивилизациями и темной магией. Каждая локация таит в себе страшные тайны.',
+                    gameplay_block2_li1: 'Множество уникальных биомов',
+                    gameplay_block2_li2: 'Атмосферные подземелья',
+                    gameplay_block2_li3: 'Самые разные виды монстров и демонов',
+                    gameplay_block3_title: 'Понятная система развития',
+                    gameplay_block3_text: 'Открывайте новые пушки, находите компаньонов, и собирайте магические руны.',
+                    gameplay_block3_li1: 'Несколько видов оружия, выбирай, что по нраву',
+                    gameplay_block3_li2: 'Простая и понятная прокачка',
+                    gameplay_block3_li3: 'Отдельный режим для быстрого гринда и проверки своих навыков'
                 }
             };
 
